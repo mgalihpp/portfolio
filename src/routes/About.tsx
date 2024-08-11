@@ -1,5 +1,6 @@
+import Contact from '@/components/About/Contact';
+import Text from '@/components/About/Text';
 import PageTitle from '@/components/elements/PageTitle';
-import Hero from '@/components/Hero';
 
 const About = () => {
   return (
@@ -9,7 +10,15 @@ const About = () => {
           title='About'
           description='Introduction and Professional Career mgalihpp'
         />
-        <Hero />
+        <Text
+          text={`Hi! I'm Galih. 
+            I started learning web development at the beginning of the pandemic. 
+            With not much else to do, I decided to begin my web development 
+            journey through web development forums. After that, 
+            I started watching various YouTube videos to delve deeper 
+            into web development, especially in terms of frontend development.`}
+        />
+        <Contact />
       </div>
     </>
   );

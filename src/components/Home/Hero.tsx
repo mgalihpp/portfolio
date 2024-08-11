@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
-import Ping from './elements/Ping';
+import Ping from '@/components/elements/Ping';
+import { Link } from 'react-router-dom';
+import { SiGmail } from 'react-icons/si';
+import { Separator } from '@/components/Separator';
 
 const Hero = () => {
   return (
@@ -26,10 +29,19 @@ const Hero = () => {
 
       <div className='mb-4 flex items-center gap-2'>
         <Ping />
-        <p className='primary text-sm md:text-lg'>
-          Available for hire
-        </p>
+        <p className='primary text-sm md:text-lg'>Available for hire</p>
       </div>
+
+      <Link
+        to='/contact'
+        aria-label='Contact Me'
+        className='primary border__gradient flex w-fit items-center gap-3 rounded-md p-3 text-sm font-bold md:text-lg lg:mb-[39px]'
+      >
+        <SiGmail />
+        Contact Me
+      </Link>
+
+      <Separator className='my-8'/>
     </motion.section>
   );
 };

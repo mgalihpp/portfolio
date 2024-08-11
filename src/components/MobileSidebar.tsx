@@ -31,7 +31,7 @@ function MobileSideBar() {
       y: '-100vh',
       transition: {
         type: 'tween',
-        duration: 0,
+        duration: 0.2,
         delay: 0.3,
       },
     },
@@ -74,8 +74,8 @@ function MobileSideBar() {
   };
 
   return (
-    <nav>
-      <header className='container mx-auto hidden items-center justify-between p-2 max-sm:flex'>
+    <div className='sticky top-0 bg-primary-dark dark:bg-neutral-950 z-10'>
+      <header className='container mx-auto hidden items-center justify-between p-2 max-md:flex'>
         <div className='flex items-center gap-4'>
           <img
             src='https://avatars.githubusercontent.com/u/68680851?v=4'
@@ -116,8 +116,8 @@ function MobileSideBar() {
                 onClick={toggleModal}
                 style={{ fontSize: '16px' }}
               />
-              <div className='relative w-full'>
-                <motion.div
+              <nav className='relative w-full'>
+                <motion.ul
                   className='flex h-full flex-col items-center justify-center gap-8'
                   variants={navLinksVariants}
                   initial='hidden'
@@ -125,7 +125,7 @@ function MobileSideBar() {
                   exit='exit'
                 >
                   {NAVLINK_ITEMS.map((item, index) => (
-                    <motion.div key={index} variants={linkItemVariants}>
+                    <motion.li key={index} variants={linkItemVariants}>
                       <Link
                         onClick={toggleModal}
                         to={item.pathname}
@@ -133,15 +133,15 @@ function MobileSideBar() {
                       >
                         {item.label}
                       </Link>
-                    </motion.div>
+                    </motion.li>
                   ))}
-                </motion.div>
-              </div>
+                </motion.ul>
+              </nav>
             </motion.div>
           )}
         </AnimatePresence>
       </header>
-    </nav>
+    </div>
   );
 }
 

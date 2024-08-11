@@ -25,3 +25,7 @@ export const NAVLINK_ITEMS = [
     label: 'Contact',
   },
 ];
+
+export const FOOTER_LINKS = [
+  
+]

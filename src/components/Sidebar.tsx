@@ -7,8 +7,8 @@ const Sidebar = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className='sticky top-0 ml-8 hidden h-screen w-fit pt-8 md:block lg:w-52'>
-      <header className='lg-w-52 m-auto flex w-full items-center justify-between md:flex-col lg:mb-12 lg:flex-row'>
+    <header className='sticky top-0 ml-8 hidden h-screen w-fit pt-8 md:block lg:w-52'>
+      <div className='lg-w-52 m-auto flex w-full items-center justify-between md:flex-col lg:mb-12 lg:flex-row'>
         <div className='flex items-center gap-4'>
           <img
             src='https://avatars.githubusercontent.com/u/68680851?v=4'
@@ -24,14 +24,17 @@ const Sidebar = () => {
           </div>
         </div>
         <ThemeToggle />
-      </header>
+      </div>
 
       <Separator className='my-8' />
 
       <nav>
         <ul className='space-y-4'>
           {NAVLINK_ITEMS.map((item, index) => {
-            const isActivePage = pathname === item.pathname;
+            const isRoot = item.pathname === '/';
+            const isActivePage = isRoot
+              ? pathname === '/'
+              : pathname.startsWith(item.pathname) && pathname !== '/';
 
             return (
               <li key={index}>
@@ -51,7 +54,7 @@ const Sidebar = () => {
           })}
         </ul>
       </nav>
-    </div>
+    </header>
   );
 };
 

@@ -1,16 +1,17 @@
+import BlogSection from '@/components/Blog/BlogSection';
 import PageTitle from '@/components/elements/PageTitle';
-import Hero from '@/components/Hero';
+import { useLoaderData } from 'react-router-dom';
 
 const Blogs = () => {
+  const blogs = useLoaderData() as BlogItem[];
+
   return (
     <>
-      <div className='px-8 pb-5 pt-8'>
-        <PageTitle
-          title='Blogs'
-          description='Introduction and Professional Career mgalihpp'
-        />
-        <Hero />
-      </div>
+      <PageTitle
+        title='Blogs'
+        description='Share thoughts and tutorials on web development.'
+      />
+      <BlogSection blogs={blogs} />
     </>
   );
 };

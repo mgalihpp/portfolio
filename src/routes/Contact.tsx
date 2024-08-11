@@ -1,15 +1,12 @@
+import SocialLinks from '@/components/Contact/SocialLinks';
 import PageTitle from '@/components/elements/PageTitle';
-import Hero from '@/components/Hero';
 
 const Contact = () => {
   return (
     <>
       <div className='px-8 pb-5 pt-8'>
-        <PageTitle
-          title='Contact'
-          description='Introduction and Professional Career mgalihpp'
-        />
-        <Hero />
+        <PageTitle title='Contact' description='Reach me out.' />
+        <SocialLinks />
       </div>
     </>
   );
