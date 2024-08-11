@@ -7,11 +7,11 @@ import { Outlet, ScrollRestoration } from 'react-router-dom';
 const RootLayout = () => {
   return (
     <>
-      <div className='md:flex lg:m-auto lg:max-w-5xl lg:justify-center'>
+      <div className="md:flex lg:m-auto lg:max-w-5xl lg:justify-center">
         <Sidebar />
         <MobileSideBar />
 
-        <div className='w-full lg:max-w-3xl'>
+        <div className="w-full lg:max-w-3xl">
           <main>
             <Outlet />
           </main>
@@ -22,12 +22,8 @@ const RootLayout = () => {
 
       <TopLoadingBar />
       <ScrollRestoration
-        getKey={(location, matches) => {
+        getKey={(location) => {
           const paths = ['/', '/about', '/contact', '/projects', '/blogs'];
-
-          console.log('location', location);
-
-          console.log('matches', matches);
 
           return paths.includes(location.pathname)
             ? location.pathname

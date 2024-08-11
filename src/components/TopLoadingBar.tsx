@@ -14,7 +14,7 @@ const TopLoadingBar = () => {
     }
   }, [navigation]);
 
-  return <LoadingBar color='#b3ffab' ref={ref} />;
+  return <LoadingBar color='#8e9eab' ref={ref} />;
 };
 
 export default TopLoadingBar;

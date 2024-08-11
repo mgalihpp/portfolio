@@ -20,10 +20,9 @@ export default function Article({ content }: ArticleProps) {
 
   const handleCopy = (code: string) => {
     copy(code);
+    console.log('Copied', value);
     setIsCopied(true);
   };
-
-  console.log('Copied', value);
 
   React.useEffect(() => {
     if (isCopied) {
