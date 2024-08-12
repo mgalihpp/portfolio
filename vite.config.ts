@@ -16,6 +16,18 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
+            if (id.includes('@sanity')) {
+              return 'vendor-sanity';
+            }
+            if (id.includes('react')) {
+              return 'vendor-react';
+            }
+            if (id.includes('framer-motion')) {
+              return 'vendor-framer-motion';
+            }
+            if (id.includes('date-fns')) {
+              return 'vendor-date-fns';
+            }
             return 'vendor';
           }
         },
