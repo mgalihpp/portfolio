@@ -3,8 +3,10 @@ import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 import { cn, imageUrlFor } from '@/lib/utils';
-import { useState } from 'react';
 import { incrementViews } from '@/helpers/incrementViews';
+import { useImagePreloader } from '@/hooks/useImagePreloader';
+import { useRef } from 'react';
+import { Skeleton } from '../elements/Skeleton';
 
 interface BlogCardProps {
   _id: string;
@@ -32,12 +34,9 @@ export default function BlogCard({
   slug,
   checkTagged,
 }: BlogCardProps) {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
+  const imageLoaded = useImagePreloader(imgRef);
   const handleCardClick = async () => {
     try {
       await incrementViews({ blog_id: _id });
@@ -58,17 +57,21 @@ export default function BlogCard({
         className="group flex h-full flex-col"
       >
         <div className="relative">
+          {!imageLoaded && <Skeleton className="h-52 w-full rounded-t-md" />}
           <img
+            ref={imgRef}
             src={imageUrlFor(image).url()}
             alt={`Image of ${title}`}
             width={1200}
             height={480}
-            onLoad={handleImageLoad}
             className={cn('h-auto w-auto rounded-t-md', {
               blur: !imageLoaded,
               'remove-blur': imageLoaded,
             })}
-            loading="lazy"
+            loading="eager"
+            style={{
+              display: imageLoaded ? 'block' : 'none',
+            }}
           />
 
           <div className="absolute bottom-2 right-2 flex gap-1">

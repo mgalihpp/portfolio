@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 import Ping from '../elements/Ping';
 import { TbArrowUpRight } from 'react-icons/tb';
 import Tooltip from '../elements/Tooltip';
-import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useImagePreloader } from '@/hooks/useImagePreloader';
+import { Skeleton } from '../elements/Skeleton';
+import { useRef } from 'react';
 
 type ProjectCardProps = Project;
 
 export default function Card(props: ProjectCardProps) {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
+  const imageLoaded = useImagePreloader(imgRef);
 
   return (
     <motion.li
@@ -30,7 +30,9 @@ export default function Card(props: ProjectCardProps) {
         className="group flex h-full cursor-pointer flex-col"
       >
         <div>
+          {!imageLoaded && <Skeleton className="h-52 w-full rounded-t-md" />}
           <img
+            ref={imgRef}
             src={props.image}
             alt={props.imageAlt}
             className={cn('h-auto w-auto rounded-t-md', {
@@ -39,9 +41,11 @@ export default function Card(props: ProjectCardProps) {
             })}
             width={1920}
             height={1080}
-            onLoad={handleImageLoad}
-            loading="lazy"
+            loading="eager"
             aria-label={`Project image of ${props.name}`}
+            style={{
+              display: imageLoaded ? 'block' : 'none',
+            }}
           />
         </div>
 
