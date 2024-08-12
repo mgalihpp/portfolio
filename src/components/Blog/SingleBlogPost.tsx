@@ -15,7 +15,7 @@ export default function SingleBlogPost() {
       <div className='mx-auto flex h-[484px] flex-col items-center justify-center space-y-4'>
         <p className='primary text-lg'>Blog not found</p>
         <Link
-          to='/blogs'
+          to='/blog'
           aria-current='page'
           className='cursor-pointer rounded-md bg-neutral-950 px-3 py-2 text-sm text-white shadow-lg shadow-neutral-500/20 transition active:scale-95 dark:bg-neutral-100 dark:text-neutral-900'
         >

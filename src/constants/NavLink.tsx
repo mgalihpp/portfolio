@@ -18,7 +18,7 @@ export const NAVLINK_ITEMS = [
     pathname: '/projects',
     label: 'Projects',
   },
-  { icon: <TbWriting size={ICON_SIZE} />, pathname: '/blogs', label: 'Blogs' },
+  { icon: <TbWriting size={ICON_SIZE} />, pathname: '/blog', label: 'Blogs' },
   {
     icon: <FaRegPaperPlane size={ICON_SIZE} />,
     pathname: '/contact',

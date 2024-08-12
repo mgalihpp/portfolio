@@ -42,7 +42,7 @@ export const PROJECTS_ITEMS: Project[] = [
     ],
     description:
       'Guru AI Teacher Language Speech provides AI-based language and speech recognition services to help users improve their language skills.',
-    image: 'https://guruai.my.id/images/prev1.webp',
+    image: 'https://utfs.io/f/979aeaad-44e1-4608-b72b-aacbedd646b1-1rnwpq.webp',
     imageAlt: 'Guru AI preview image',
   },
   {
@@ -72,7 +72,7 @@ export const PROJECTS_ITEMS: Project[] = [
     ],
     description: 'Music Player is a music streaming web application.',
     image:
-      'https://raw.githubusercontent.com/mgalihpp/music_player/main/docs/preview5.png',
+      'https://utfs.io/f/585f8435-ac9b-44a6-9c26-c2a970d4d310-q3sxud.webp',
     imageAlt: 'Music Player preview image',
   },
 ];

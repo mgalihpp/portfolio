@@ -246,3 +246,13 @@ table {
     @apply border-t border-solid border-primary-gradient border-opacity-30 shadow-md shadow-primary-gradient dark:border-secondary-gradient dark:border-opacity-30 dark:shadow-secondary-dark;
   }
 }
+
+.blur {
+  filter: blur(5px);
+  transition: filter 0.3s ease-in;
+}
+
+.remove-blur {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+}

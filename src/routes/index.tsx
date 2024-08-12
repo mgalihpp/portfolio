@@ -8,11 +8,13 @@ import Blogs from './Blogs';
 import Contact from './Contact';
 import Home from './Home';
 import Projects from './Projects';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export const routes: RouteObject[] = [
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         path: '',
@@ -36,7 +38,7 @@ export const routes: RouteObject[] = [
         },
       },
       {
-        path: 'blogs',
+        path: 'blog',
         element: <RootBlogsLayout />,
         children: [
           {
@@ -51,7 +53,7 @@ export const routes: RouteObject[] = [
             },
           },
           {
-            path: '/blogs/:slug',
+            path: '/blog/:slug',
             element: <SingleBlogPost />,
             loader: async ({ params }) => {
               return getBlog({

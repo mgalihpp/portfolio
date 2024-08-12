@@ -23,7 +23,7 @@ const RootLayout = () => {
       <TopLoadingBar />
       <ScrollRestoration
         getKey={(location) => {
-          const paths = ['/', '/about', '/contact', '/projects', '/blogs'];
+          const paths = ['/', '/about', '/contact', '/projects', '/blog'];
 
           return paths.includes(location.pathname)
             ? location.pathname

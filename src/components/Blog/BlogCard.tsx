@@ -2,7 +2,8 @@ import clsx from 'clsx';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
-import { imageUrlFor } from '@/lib/utils';
+import { cn, imageUrlFor } from '@/lib/utils';
+import { useState } from 'react';
 
 interface BlogCardProps {
   image: string;
@@ -28,6 +29,12 @@ export default function BlogCard({
   slug,
   checkTagged,
 }: BlogCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   const handleCardClick = async () => {
     try {
       //   await incrementViews(id);
@@ -39,25 +46,29 @@ export default function BlogCard({
 
   return (
     <li
-      className='border__color rounded-md bg-transparent shadow-lg transition-transform duration-200 dark:bg-neutral-800 dark:shadow-none lg:hover:scale-[1.03]'
+      className="border__color rounded-md bg-transparent shadow-lg transition-transform duration-200 dark:bg-neutral-800 dark:shadow-none lg:hover:scale-[1.03]"
       onClick={handleCardClick}
     >
       <Link
-        to={`/blogs/${slug}`}
+        to={`/blog/${slug}`}
         aria-label={`Read more about the ${title} article`}
-        className='group flex h-full flex-col'
+        className="group flex h-full flex-col"
       >
-        <div className='relative'>
+        <div className="relative">
           <img
             src={imageUrlFor(image).url()}
             alt={`Image of ${title}`}
             width={1200}
             height={480}
-            className='h-auto w-auto rounded-t-md'
-            loading='lazy'
+            onLoad={handleImageLoad}
+            className={cn('h-auto w-auto rounded-t-md', {
+              blur: !imageLoaded,
+              'remove-blur': imageLoaded,
+            })}
+            loading="lazy"
           />
 
-          <div className='absolute bottom-2 right-2 flex gap-1'>
+          <div className="absolute bottom-2 right-2 flex gap-1">
             {tags.map((tag, index) => (
               <span
                 key={index}
@@ -65,7 +76,7 @@ export default function BlogCard({
                   checkTagged?.(tag.title)
                     ? 'bg-gradient-linear text-primary-light'
                     : 'bg-neutral-200 dark:bg-neutral-800',
-                  'rounded-md px-2 py-1 text-xs',
+                  'rounded-md px-2 py-1 text-xs'
                 )}
               >
                 {tag.title}
@@ -74,30 +85,30 @@ export default function BlogCard({
           </div>
         </div>
 
-        <div className='p-4'>
-          <h2 className='primary font-bold leading-relaxed md:h-[84px] md:text-lg lg:h-14'>
+        <div className="p-4">
+          <h2 className="primary font-bold leading-relaxed md:h-[84px] md:text-lg lg:h-14">
             {title}
           </h2>
 
-          <div className='mt-2 flex gap-2 text-sm font-medium'>
-            <div className='flex items-center gap-1'>
-              <HiOutlineClock className='text-base' />
-              <span className='gradient__text'>{readingTime} min read</span>
+          <div className="mt-2 flex gap-2 text-sm font-medium">
+            <div className="flex items-center gap-1">
+              <HiOutlineClock className="text-base" />
+              <span className="gradient__text">{readingTime} min read</span>
             </div>
 
-            <div className='flex items-center gap-1'>
-              <HiOutlineEye className='text-base' />
-              <span className='gradient__text'>
+            <div className="flex items-center gap-1">
+              <HiOutlineEye className="text-base" />
+              <span className="gradient__text">
                 {views?.toLocaleString() ?? '0'} views
               </span>
             </div>
           </div>
 
-          <p className='primary mb-2 mt-4 text-sm font-semibold'>
+          <p className="primary mb-2 mt-4 text-sm font-semibold">
             {format(new Date(releaseDate), 'MMMM dd, yyyy')}
           </p>
 
-          <p className='secondary text-sm leading-relaxed'>{description}</p>
+          <p className="secondary text-sm leading-relaxed">{description}</p>
         </div>
       </Link>
     </li>
