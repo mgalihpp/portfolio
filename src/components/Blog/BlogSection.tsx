@@ -107,7 +107,8 @@ export default function BlogSection(props: BlogSectionProps) {
         >
           {filteredBlogs.map((blog: BlogItem) => (
             <BlogCard
-              key={1}
+              key={blog._id}
+              _id={blog._id}
               author={blog.author.name}
               image={blog.mainImage.asset.url}
               tags={blog.categories}

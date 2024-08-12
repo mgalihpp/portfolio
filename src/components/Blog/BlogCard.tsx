@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 import { cn, imageUrlFor } from '@/lib/utils';
 import { useState } from 'react';
+import { incrementViews } from '@/helpers/incrementViews';
 
 interface BlogCardProps {
+  _id: string;
   image: string;
   tags: Categories[];
   title: string;
@@ -19,6 +21,7 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({
+  _id,
   image,
   tags,
   title,
@@ -37,7 +40,7 @@ export default function BlogCard({
 
   const handleCardClick = async () => {
     try {
-      //   await incrementViews(id);
+      await incrementViews({ blog_id: _id });
     } catch (error) {
       console.error(error);
       throw error;

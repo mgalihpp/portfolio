@@ -5,6 +5,7 @@ const client = createClient({
   dataset: 'production', // this is from those question during 'sanity init'
   useCdn: true,
   apiVersion: '2021-08-31',
+  token: import.meta.env.VITE_SANITY_TOKEN,
 });
 
 export default client;

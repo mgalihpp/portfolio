@@ -21,6 +21,7 @@ export function getBlog({
         tags,
         page: parseInt(page),
       })}{
+      _id,
       title,
       slug,
       readingTime,
@@ -37,7 +38,8 @@ export function getBlog({
         title
         },
       author->{
-        name
+        name,
+        image
       },
       content
       }`,

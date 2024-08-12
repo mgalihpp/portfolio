@@ -16,7 +16,7 @@ interface BlogItem {
   publishedAt: string;
   description: string;
   categories: Categories[];
-  // _id: string;
+  _id: string;
   title: string;
   slug: {
     _type: string;
@@ -32,6 +32,12 @@ interface BlogItem {
   };
   author: {
     name: string;
+    image: {
+      asset: {
+        _ref: string;
+        _id: string;
+      };
+    };
   };
   content: BlockType[];
 }
