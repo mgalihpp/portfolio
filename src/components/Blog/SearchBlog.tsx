@@ -3,6 +3,7 @@ import Tag from "@/components/elements/Tag";
 import { TAGS } from "@/constants/Tag";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 
 interface SearchBlogProps {
@@ -19,15 +20,7 @@ export default function SearchBlog({
   checkTagged,
   checkDisabled,
 }: SearchBlogProps) {
-  // const [selectedTags, setSelectedTags] = useState<string[]>([]);
-
-  // const handleTagClick = (tag: string) => {
-  //   if (selectedTags.includes(tag)) {
-  //     setSelectedTags(selectedTags.filter((t) => t !== tag));
-  //   } else {
-  //     setSelectedTags([...selectedTags, tag]);
-  //   }
-  // };
+  const { t } = useLanguage();
 
   return (
     <>
@@ -37,12 +30,12 @@ export default function SearchBlog({
         transition={{ delay: 0.2 }}
       >
         <label htmlFor="search" className="primary text-sm md:text-base">
-          Search
+          {t('blog.search')}
         </label>
         <input
           id="search"
           type="search"
-          placeholder="Search..."
+          placeholder={t('blog.searchPlaceholder')}
           value={search}
           onChange={handleSearch}
           className={clsx(
@@ -64,7 +57,7 @@ export default function SearchBlog({
         transition={{ delay: 0.4 }}
         className="mb-8 mt-2 flex flex-wrap justify-start gap-2 text-sm"
       >
-        <span className="primary text-sm md:text-base">Choose topic:</span>
+        <span className="primary text-sm md:text-base">{t('blog.chooseTopic')}</span>
         {TAGS.map((tag) => (
           <Tag
             key={tag}

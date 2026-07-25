@@ -33,7 +33,7 @@ export const SOCIAL_LINKS = [
   },
   {
     icon: <FiLinkedin size={ICON_SIZE} />,
-    url: 'https://www.linkedin.com/in/',
+    url: 'https://www.linkedin.com/in/mgalihpp',
     label: 'LinkedIn',
     backgroundColor: '#0A66C2',
   },
@@ -45,7 +45,7 @@ export const SOCIAL_LINKS = [
   },
   {
     icon: <Xicon size={ICON_SIZE} />,
-    url: 'https://x.com/mgalihppp',
+    url: 'https://x.com/stunobG',
     label: 'Twitter',
     backgroundColor: '#262626',
   },

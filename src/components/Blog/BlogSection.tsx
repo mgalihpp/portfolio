@@ -2,12 +2,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import BlogCard from './BlogCard';
 import SearchBlog from './SearchBlog';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 interface BlogSectionProps {
   blogs: BlogItem[];
 }
 
 export default function BlogSection(props: BlogSectionProps) {
+  const { t } = useLanguage();
   const [search, setSearch] = useState<string>('');
   const [sortedBlogs, setSortedBlogs] = useState<BlogItem[]>([]);
   const [filteredBlogs, setFilteredBlogs] = useState(sortedBlogs);
@@ -133,7 +135,7 @@ export default function BlogSection(props: BlogSectionProps) {
               text-lg  font-bold
               md:text-xl"
           >
-            Sorry, not found
+            {t('blog.notFound')}
           </h2>
         </div>
       )}

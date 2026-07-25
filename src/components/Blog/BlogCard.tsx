@@ -7,6 +7,7 @@ import { incrementViews } from '@/helpers/incrementViews';
 import { useImagePreloader } from '@/hooks/useImagePreloader';
 import { useRef } from 'react';
 import { Skeleton } from '../elements/Skeleton';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 interface BlogCardProps {
   _id: string;
@@ -34,6 +35,7 @@ export default function BlogCard({
   slug,
   checkTagged,
 }: BlogCardProps) {
+  const { t } = useLanguage();
   const imgRef = useRef<HTMLImageElement>(null);
 
   const imageLoaded = useImagePreloader(imgRef);
@@ -53,7 +55,7 @@ export default function BlogCard({
     >
       <Link
         to={`/blog/${slug}`}
-        aria-label={`Read more about the ${title} article`}
+        aria-label={t('blog.readMore', { title })}
         className="group flex h-full flex-col"
       >
         <div className="relative">
@@ -61,7 +63,7 @@ export default function BlogCard({
           <img
             ref={imgRef}
             src={imageUrlFor(image).url()}
-            alt={`Image of ${title}`}
+            alt={t('blog.imageOf', { title })}
             width={1200}
             height={480}
             className={cn('h-auto w-auto rounded-t-md', {
@@ -99,13 +101,13 @@ export default function BlogCard({
           <div className="mt-2 flex gap-2 text-sm font-medium">
             <div className="flex items-center gap-1">
               <HiOutlineClock className="text-base" />
-              <span className="gradient__text">{readingTime} min read</span>
+              <span className="gradient__text">{readingTime} {t('blog.minRead')}</span>
             </div>
 
             <div className="flex items-center gap-1">
               <HiOutlineEye className="text-base" />
               <span className="gradient__text">
-                {views?.toLocaleString() ?? '0'} views
+                {views?.toLocaleString() ?? '0'} {t('blog.views')}
               </span>
             </div>
           </div>

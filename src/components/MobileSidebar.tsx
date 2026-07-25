@@ -2,11 +2,14 @@ import { NAVLINK_ITEMS } from '@/constants/NavLink';
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import ThemeToggle from './ThemeToggle';
+import LanguageToggle from './LanguageToggle';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 function MobileSideBar() {
   const [showModal, setShowModal] = useState(false);
+  const { t } = useLanguage();
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -78,7 +81,7 @@ function MobileSideBar() {
       <header className='container mx-auto hidden items-center justify-between p-2 max-md:flex'>
         <div className='flex items-center gap-4'>
           <img
-            src='https://utfs.io/f/12fca9d9-7b76-4c9e-9d0d-e3d87ffc6c1d-wh4i21.webp'
+            src='/my.jpg'
             alt='mgalihpp avatar'
             className='border__color size-10 rounded-full'
             loading='lazy'
@@ -88,11 +91,16 @@ function MobileSideBar() {
             <h2 className='primary text-base font-medium md:text-lg'>
               mgalihpp
             </h2>
-            <p className='secondary text-sm md:text-base'>-</p>
+            <p className='gradient__text text-sm md:text-base'>
+              {t('common.role')}
+            </p>
           </div>
         </div>
 
         <ul className='flex cursor-pointer items-center gap-6 text-neutral-900 dark:text-white'>
+          <li>
+            <LanguageToggle />
+          </li>
           <li>
             <ThemeToggle />
           </li>
@@ -132,7 +140,7 @@ function MobileSideBar() {
                         to={item.pathname}
                         className='cursor-pointer text-2xl font-light text-neutral-900 dark:text-white'
                       >
-                        {item.label}
+                        {t(item.labelKey)}
                       </Link>
                     </motion.li>
                   ))}

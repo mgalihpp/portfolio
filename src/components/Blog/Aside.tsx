@@ -1,13 +1,14 @@
-// import DonateBox from "@/components/elements/DonateBox";
 import { extractHeadings } from '@/lib/utils';
 import clsx from 'clsx';
 import * as React from 'react';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 interface AsideProps {
   content: BlockType[];
 }
 
 export default function Aside({ content }: AsideProps) {
+  const { t } = useLanguage();
   const headings = extractHeadings(content);
   const [activeHeading, setActiveHeading] = React.useState<string | null>(null);
 
@@ -53,7 +54,7 @@ export default function Aside({ content }: AsideProps) {
       )}
     >
       <h2 className="primary mb-4 text-xl font-bold md:text-2xl">
-        On This Page
+        {t('blog.onThisPage')}
       </h2>
 
       <ul

@@ -2,22 +2,19 @@ import Contact from '@/components/About/Contact';
 import Text from '@/components/About/Text';
 import Education from '@/components/About/Education';
 import PageTitle from '@/components/elements/PageTitle';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 const About = () => {
+  const { t } = useLanguage();
+
   return (
     <>
       <div className='px-8 pb-5 pt-8'>
         <PageTitle
-          title='About'
-          description='Introduction and Professional Career mgalihpp'
+          title={t('page.about.title')}
+          description={t('page.about.description')}
         />
-        <Text
-          text={`Halo! Saya Galih, mahasiswa Sistem Informasi di Universitas Gunadarma.
-            Saya mulai belajar web development di awal pandemi, berangkat dari forum-forum
-            web development lalu mendalaminya lewat berbagai video, terutama di sisi frontend.
-            Kini saya banyak membangun aplikasi web dengan React.js dan Next.js,
-            sekaligus mendampingi peserta pelatihan dan sertifikasi sebagai asisten laboratorium.`}
-        />
+        <Text text={t('about.text')} />
         <Education />
         <Contact />
       </div>

@@ -6,20 +6,22 @@ import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 import { Separator } from '../Separator';
 import Article from './Article';
 import Aside from './Aside';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 export default function SingleBlogPost() {
+  const { t } = useLanguage();
   const [blog] = useLoaderData() as BlogItem[];
 
   if (!blog) {
     return (
       <div className="mx-auto flex h-[484px] flex-col items-center justify-center space-y-4">
-        <p className="primary text-lg">Blog not found</p>
+        <p className="primary text-lg">{t('blog.postNotFound')}</p>
         <Link
           to="/blog"
           aria-current="page"
           className="cursor-pointer rounded-md bg-neutral-950 px-3 py-2 text-sm text-white shadow-lg shadow-neutral-500/20 transition active:scale-95 dark:bg-neutral-100 dark:text-neutral-900"
         >
-          Back
+          {t('blog.back')}
         </Link>
       </div>
     );
@@ -40,7 +42,7 @@ export default function SingleBlogPost() {
       <section>
         <img
           src={imageUrlFor(blog.mainImage.asset.url).url()}
-          alt={`Image of ${blog.title}`}
+          alt={t('blog.imageOf', { title: blog.title })}
           className="rounded-md"
           width={1200}
           height={480}
@@ -51,14 +53,14 @@ export default function SingleBlogPost() {
         </h1>
         <div className="flex secondary mb-4 mt-1 text-sm font-medium leading-relaxed flex-wrap">
           <p>
-            Written on {format(new Date(blog.publishedAt), 'dd MMMM yyyy')} by
+            {t('blog.writtenOn')} {format(new Date(blog.publishedAt), 'dd MMMM yyyy')} {t('blog.by')}
           </p>
           <div className="flex items-center gap-2 ml-1">
             {blog.author.name}
             <img
               className="w-4 h-4 rounded-full"
               src={imageUrlFor(blog.author.image.asset._ref).url()}
-              alt={`${blog.author.name} avatar`}
+              alt={t('blog.altAvatar', { name: blog.author.name })}
               loading="lazy"
             />
           </div>

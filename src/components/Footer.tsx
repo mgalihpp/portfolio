@@ -1,8 +1,11 @@
 import { SOCIAL_LINKS } from '@/constants/SosialLinks';
 import { Separator } from './Separator';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className='mb-[104px] px-8 md:mb-6'>
       <Separator className='my-8' />
@@ -10,7 +13,7 @@ export default function Footer() {
       <ul className='mt-8 flex flex-wrap justify-center gap-5 text-sm'></ul>
 
       <p className='mb-2 mt-16 text-center text-sm font-medium md:text-base'>
-        Reach me out at
+        {t('common.reachMeOut')}
       </p>
 
       <ul className='flex justify-center gap-4'>

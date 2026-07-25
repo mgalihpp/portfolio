@@ -3,29 +3,40 @@ import { FaRegPaperPlane } from 'react-icons/fa';
 import { GoProjectSymlink } from 'react-icons/go';
 import { SiAboutdotme } from 'react-icons/si';
 import { TbWriting } from 'react-icons/tb';
+import type { TranslationKey } from '@/constants/locales/en';
 
 const ICON_SIZE: number = 24;
 
-export const NAVLINK_ITEMS = [
-  { icon: <AiOutlineHome size={ICON_SIZE} />, pathname: '/', label: 'Home' },
+type NavLinkItem = {
+  icon: JSX.Element;
+  pathname: string;
+  labelKey: TranslationKey;
+};
+
+export const NAVLINK_ITEMS: NavLinkItem[] = [
+  {
+    icon: <AiOutlineHome size={ICON_SIZE} />,
+    pathname: '/',
+    labelKey: 'nav.home',
+  },
   {
     icon: <SiAboutdotme size={ICON_SIZE} />,
     pathname: '/about',
-    label: 'About',
+    labelKey: 'nav.about',
   },
   {
     icon: <GoProjectSymlink size={ICON_SIZE} />,
     pathname: '/projects',
-    label: 'Projects',
+    labelKey: 'nav.projects',
   },
-  { icon: <TbWriting size={ICON_SIZE} />, pathname: '/blog', label: 'Blogs' },
+  {
+    icon: <TbWriting size={ICON_SIZE} />,
+    pathname: '/blog',
+    labelKey: 'nav.blogs',
+  },
   {
     icon: <FaRegPaperPlane size={ICON_SIZE} />,
     pathname: '/contact',
-    label: 'Contact',
+    labelKey: 'nav.contact',
   },
 ];
-
-export const FOOTER_LINKS = [
-  
-]

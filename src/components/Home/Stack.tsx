@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { HiOutlineCode } from 'react-icons/hi';
 import Marquee from '../elements/Marquee';
 import StackCard from '../cards/StackCard';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 const Stack = () => {
+  const { t } = useLanguage();
+
   const stackInArray: Array<[string, JSX.Element]> = Object.entries(
     STACKS,
   ).sort(() => Math.random() - 0.5);
@@ -17,7 +20,7 @@ const Stack = () => {
     >
       <div className='primary mb-5 flex items-center gap-2'>
         <HiOutlineCode />
-        <h2 className='font-bold'>Stacks</h2>
+        <h2 className='font-bold'>{t('stacks.title')}</h2>
       </div>
 
       <div className='flex flex-col md:max-w-[calc(100vw-156px)] lg:max-w-[720px]'>

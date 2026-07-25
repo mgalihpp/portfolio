@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@/index.css';
 import { ThemeProvider } from '@/providers/ThemeProvider.tsx';
+import { LanguageProvider } from '@/providers/LanguageProvider.tsx';
 import App from '@/App';
 
 ReactDOM.createRoot(document.getElementById('app')!).render(
   <React.StrictMode>
     <ThemeProvider defaultTheme='dark'>
-      <App />
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
     </ThemeProvider>
   </React.StrictMode>,
 );

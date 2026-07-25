@@ -7,10 +7,12 @@ import { cn } from '@/lib/utils';
 import { useImagePreloader } from '@/hooks/useImagePreloader';
 import { Skeleton } from '../elements/Skeleton';
 import { useRef } from 'react';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 type ProjectCardProps = Project;
 
 export default function Card(props: ProjectCardProps) {
+  const { t } = useLanguage();
   const imgRef = useRef<HTMLImageElement>(null);
 
   const imageLoaded = useImagePreloader(imgRef);
@@ -26,7 +28,7 @@ export default function Card(props: ProjectCardProps) {
         to={props.url}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Visit ${props.name} website demo`}
+        aria-label={t('project.visit', { name: props.name })}
         className="group flex h-full cursor-pointer flex-col"
       >
         <div>
@@ -36,7 +38,7 @@ export default function Card(props: ProjectCardProps) {
               <img
                 ref={imgRef}
                 src={props.image}
-                alt={props.imageAlt ?? `${props.name} preview image`}
+                alt={props.imageAlt ?? t('project.imagePreview', { name: props.name })}
                 className={cn('h-auto w-auto rounded-t-md', {
                   blur: !imageLoaded,
                   'remove-blur': imageLoaded,
@@ -44,7 +46,7 @@ export default function Card(props: ProjectCardProps) {
                 width={1920}
                 height={1080}
                 loading="eager"
-                aria-label={`Project image of ${props.name}`}
+                aria-label={t('project.imageOf', { name: props.name })}
                 style={{
                   display: imageLoaded ? 'block' : 'none',
                 }}
@@ -53,7 +55,7 @@ export default function Card(props: ProjectCardProps) {
           ) : (
             <div
               role="img"
-              aria-label={`${props.name} placeholder image`}
+              aria-label={t('project.imagePlaceholder', { name: props.name })}
               className="flex h-52 w-full items-center justify-center rounded-t-md bg-gradient-to-br from-neutral-200 via-neutral-100 to-neutral-300 dark:from-neutral-700 dark:via-neutral-800 dark:to-neutral-900"
             >
               <span className="gradient__text px-4 text-center text-xl font-bold md:text-2xl">

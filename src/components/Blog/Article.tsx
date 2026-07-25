@@ -1,6 +1,7 @@
 import BlockContent from '@sanity/block-content-to-react';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useLanguage } from '@/providers/LanguageProvider';
 import '@/styles/blogDetails.css';
 import clsx from 'clsx';
 import * as React from 'react';
@@ -13,6 +14,7 @@ interface ArticleProps {
 }
 
 export default function Article({ content }: ArticleProps) {
+  const { t } = useLanguage();
   const [value, copy] = useCopyToClipboard();
   const [isCopied, setIsCopied] = React.useState<boolean>(false);
   const isTableSize = useMediaQuery('(min-width: 768px)');
@@ -58,7 +60,7 @@ export default function Article({ content }: ArticleProps) {
               'primary rounded-md p-2 text-sm'
             )}
             onClick={() => handleCopy(props.node.code)}
-            aria-label="Copy code to clipboard"
+            aria-label={t('blog.copyCode')}
           >
             {!isCopied ? (
               <BiSolidCopyAlt size={18} className="text-neutral-200" />

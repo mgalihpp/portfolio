@@ -2,14 +2,17 @@ import PageTitle from '@/components/elements/PageTitle';
 import Card from '@/components/Projects/Card';
 import { PROJECTS_ITEMS } from '@/constants/Project';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 const Projects = () => {
+  const { t } = useLanguage();
+
   return (
     <>
       <div className='px-8 pb-5 pt-8'>
         <PageTitle
-          title='Projects'
-          description='All my projects and projects I have been working on'
+          title={t('page.projects.title')}
+          description={t('page.projects.description')}
         />
         <motion.section
           initial={{ opacity: 0, y: 50 }}

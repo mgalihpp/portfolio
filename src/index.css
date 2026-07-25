@@ -256,3 +256,13 @@ table {
   filter: blur(0px);
   transition: filter 0.3s ease-in;
 }
+
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

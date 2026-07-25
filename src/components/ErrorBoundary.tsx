@@ -1,32 +1,35 @@
 import React from 'react';
 import { isRouteErrorResponse, Link, useRouteError } from 'react-router-dom';
 import Meta from './elements/Meta';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 export function ErrorBoundary() {
+  const { t } = useLanguage();
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      return <Template>This page doesn't exist!</Template>;
+      return <Template>{t('error.notFound')}</Template>;
     }
 
     if (error.status === 401) {
-      return <Template>You aren't authorized to see this</Template>;
+      return <Template>{t('error.unauthorized')}</Template>;
     }
 
     if (error.status === 503) {
-      return <Template>Looks like our API is down</Template>;
+      return <Template>{t('error.serviceDown')}</Template>;
     }
 
     if (error.status === 418) {
-      return <Template>🫖</Template>;
+      return <Template>{t('error.teapot')}</Template>;
     }
   }
 
-  return <Template>Something went wrong</Template>;
+  return <Template>{t('error.default')}</Template>;
 }
 
 const Template = (props: React.PropsWithChildren) => {
+  const { t } = useLanguage();
   {
     /*
   Graphic from https://www.opendoodles.com/
@@ -59,7 +62,7 @@ const Template = (props: React.PropsWithChildren) => {
         </svg>
 
         <h1 className="mt-6 text-2xl font-bold tracking-tight primary sm:text-4xl">
-          Uh-oh!
+          {t('error.uhOh')}
         </h1>
 
         <p className="mt-4 primary">{props.children}</p>
@@ -68,10 +71,10 @@ const Template = (props: React.PropsWithChildren) => {
         <Link
           to="/"
           aria-current="page"
-          aria-label="Go to home"
+          aria-label={t('error.goToHome')}
           className="cursor-pointer rounded-md bg-neutral-950 px-3 py-2 text-sm text-white shadow-lg shadow-neutral-500/20 transition active:scale-95 dark:bg-neutral-100 dark:text-neutral-900 mt-8"
         >
-          Back to home
+          {t('error.backToHome')}
         </Link>
       </div>
     </div>
