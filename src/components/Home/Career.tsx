@@ -18,12 +18,21 @@ const Career = () => {
         <h2 className='primary font-bold'>{t('career.title')}</h2>
       </div>
 
-      <ul className='mb-6 mt-4 space-y-6'>
-        {CAREER_ITEMS.map((item) => (
-          <li
-            key={`${item.company}-${item.period.en}`}
-            className='border-l-2 border-solid border-secondary-light pl-4 dark:border-secondary-dark'
-          >
+      <div className='relative mb-6 mt-4'>
+        <div
+          className='absolute left-0 top-[5px] bottom-0 w-0.5 -translate-x-1/2 bg-secondary-light md:top-[9px] dark:bg-secondary-dark'
+          aria-hidden='true'
+        />
+        <ul className='space-y-6'>
+          {CAREER_ITEMS.map((item) => (
+            <li
+              key={`${item.company}-${item.period.en}`}
+              className='relative pl-6'
+            >
+              <span
+                className='absolute left-0 top-[5px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-secondary-light ring-2 ring-white md:top-[9px] dark:bg-secondary-dark dark:ring-black'
+                aria-hidden='true'
+              />
             <h3 className='primary text-sm font-bold md:text-lg'>
               {item.role[language]}
             </h3>
@@ -36,7 +45,8 @@ const Career = () => {
             </p>
           </li>
         ))}
-      </ul>
+        </ul>
+      </div>
 
       <a
         href={CV_FILE}

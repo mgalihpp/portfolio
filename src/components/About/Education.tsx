@@ -16,12 +16,21 @@ export default function Education() {
         {t('education.title')}
       </h2>
 
-      <ul className='mt-4 space-y-4'>
-        {EDUCATION_ITEMS.map((item) => (
-          <li
-            key={item.institution}
-            className='border-l-2 border-solid border-secondary-light pl-4 dark:border-secondary-dark'
-          >
+      <div className='relative mt-4'>
+        <div
+          className='absolute left-0 top-[5px] bottom-0 w-0.5 -translate-x-1/2 bg-secondary-light md:top-[9px] dark:bg-secondary-dark'
+          aria-hidden='true'
+        />
+        <ul className='space-y-4'>
+          {EDUCATION_ITEMS.map((item) => (
+            <li
+              key={item.institution}
+              className='relative pl-6'
+            >
+              <span
+                className='absolute left-0 top-[5px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-secondary-light ring-2 ring-white md:top-[9px] dark:bg-secondary-dark dark:ring-black'
+                aria-hidden='true'
+              />
             <h3 className='primary text-sm font-bold md:text-lg'>
               {item.institution}
             </h3>
@@ -34,7 +43,8 @@ export default function Education() {
             <p className='secondary mt-1 text-sm'>{item.note[language]}</p>
           </li>
         ))}
-      </ul>
+              </ul>
+      </div>
 
       <Separator className='my-8' />
     </motion.section>
