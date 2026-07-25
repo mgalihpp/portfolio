@@ -11,7 +11,7 @@ const Sidebar = () => {
       <div className="lg-w-52 m-auto flex w-full items-center justify-between md:flex-col lg:mb-12 lg:flex-row">
         <div className="flex items-center gap-4">
           <img
-            src="https://utfs.io/f/12fca9d9-7b76-4c9e-9d0d-e3d87ffc6c1d-wh4i21.webp"
+            src="/my.jpg"
             alt="mgalihpp avatar"
             className="border__color size-11 rounded-full"
             loading="lazy"
@@ -21,7 +21,7 @@ const Sidebar = () => {
             <h2 className="primary text-base font-medium md:text-lg">
               mgalihpp
             </h2>
-            <p className="secondary text-sm md:text-base">-</p>
+            <p className="gradient__text text-sm md:text-base">Programmer</p>
           </div>
         </div>
         <ThemeToggle />

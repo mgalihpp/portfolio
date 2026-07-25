@@ -17,14 +17,15 @@ const Hero = () => {
       </h1>
 
       <ul className='secondary mb-4 list-disc space-y-1 pl-4 text-sm md:text-lg'>
-        <li>Fullstack Developer</li>
+        <li>Fullstack Developer &amp; Laboratory Assistant</li>
+        <li>Information Systems student at Universitas Gunadarma</li>
         <li>
           I build <span className='gradient__text'>something interesting</span>.
         </li>
       </ul>
 
       <p className='secondary mb-4 text-sm leading-relaxed md:text-lg'>
-        Working within the ReactJS
+        Working mostly with React.js, Next.js, and TypeScript
       </p>
 
       <div className='mb-4 flex items-center gap-2'>

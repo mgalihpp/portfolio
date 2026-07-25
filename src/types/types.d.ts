@@ -8,8 +8,9 @@ interface Project {
   name: string;
   description: string;
   techStack: TechStack[];
-  image: string;
-  imageAlt: string;
+  /** Screenshot URL. When omitted the card renders a gradient placeholder. */
+  image?: string;
+  imageAlt?: string;
 }
 
 interface BlogItem {

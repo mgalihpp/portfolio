@@ -7,14 +7,17 @@ import {
   SiHtml5,
   SiJavascript,
   SiJest,
+  SiLaravel,
   SiNextdotjs,
   SiNodedotjs,
+  SiPhp,
   SiPrisma,
   SiReact,
   SiReactrouter,
   SiRedux,
   SiTailwindcss,
   SiTypescript,
+  SiWordpress,
 } from "react-icons/si";
 
 type stacksProps = {
@@ -45,6 +48,9 @@ export const STACKS: stacksProps = {
   "Node JS": <SiNodedotjs size={ICON_SIZE} color="#418A3F" />,
   // Github: <SiGithub size={ICON_SIZE} />,
   "React Router": <SiReactrouter size={ICON_SIZE} color="#F54350" />,
+  Laravel: <SiLaravel size={ICON_SIZE} color="#FF2D20" />,
+  PHP: <SiPhp size={ICON_SIZE} color="#777BB4" />,
+  WordPress: <SiWordpress size={ICON_SIZE} color="#21759B" />,
   // "React Hook Form": <SiReacthookform size={ICON_SIZE} color="#ED5991" />,
   // "React Table": <SiReacttable size={ICON_SIZE} color="#1C8FC8" />,
 };

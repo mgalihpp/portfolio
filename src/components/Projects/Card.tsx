@@ -30,23 +30,37 @@ export default function Card(props: ProjectCardProps) {
         className="group flex h-full cursor-pointer flex-col"
       >
         <div>
-          {!imageLoaded && <Skeleton className="h-52 w-full rounded-t-md" />}
-          <img
-            ref={imgRef}
-            src={props.image}
-            alt={props.imageAlt}
-            className={cn('h-auto w-auto rounded-t-md', {
-              blur: !imageLoaded,
-              'remove-blur': imageLoaded,
-            })}
-            width={1920}
-            height={1080}
-            loading="eager"
-            aria-label={`Project image of ${props.name}`}
-            style={{
-              display: imageLoaded ? 'block' : 'none',
-            }}
-          />
+          {props.image ? (
+            <>
+              {!imageLoaded && <Skeleton className="h-52 w-full rounded-t-md" />}
+              <img
+                ref={imgRef}
+                src={props.image}
+                alt={props.imageAlt ?? `${props.name} preview image`}
+                className={cn('h-auto w-auto rounded-t-md', {
+                  blur: !imageLoaded,
+                  'remove-blur': imageLoaded,
+                })}
+                width={1920}
+                height={1080}
+                loading="eager"
+                aria-label={`Project image of ${props.name}`}
+                style={{
+                  display: imageLoaded ? 'block' : 'none',
+                }}
+              />
+            </>
+          ) : (
+            <div
+              role="img"
+              aria-label={`${props.name} placeholder image`}
+              className="flex h-52 w-full items-center justify-center rounded-t-md bg-gradient-to-br from-neutral-200 via-neutral-100 to-neutral-300 dark:from-neutral-700 dark:via-neutral-800 dark:to-neutral-900"
+            >
+              <span className="gradient__text px-4 text-center text-xl font-bold md:text-2xl">
+                {props.name}
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="p-4">
