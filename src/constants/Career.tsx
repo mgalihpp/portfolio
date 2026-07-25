@@ -1,6 +1,6 @@
 import type { Language } from '@/providers/LanguageProvider';
 
-export const CV_FILE = '/CV-MUHAMMAD_GALIH_PRATAMA_PUTRA.pdf';
+export const CV_FILE = 'https://eujut19kua.ufs.sh/f/DovWuZwOIqaW2XATOkLyUxEwRKk9Ma3dA6W0TGJQ7qrnjhpC';
 
 type Localized = Record<Language, string>;
 
