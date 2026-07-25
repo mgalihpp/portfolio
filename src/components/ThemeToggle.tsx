@@ -48,7 +48,7 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className='grid size-10 place-items-center rounded-full transition duration-200 hover:scale-110 hover:bg-neutral-200 dark:hover:bg-neutral-800 active:scale-95'
+      className='grid size-10 place-items-center rounded-full transition duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 active:scale-95'
       onClick={handleClick}
       aria-label={t('common.themeButton')}
     >
