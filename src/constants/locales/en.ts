@@ -35,6 +35,7 @@ export const en = {
   'education.title': 'Education',
 
   'stacks.title': 'Stacks',
+  'aiTools.title': 'AI Tools',
 
   'about.text': `Hi! I'm Galih, an Information Systems student at Universitas Gunadarma.
     I started learning web development at the beginning of the pandemic, starting from

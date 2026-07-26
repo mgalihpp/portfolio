@@ -37,6 +37,7 @@ export const id: Record<TranslationKey, string> = {
   'education.title': 'Pendidikan',
 
   'stacks.title': 'Teknologi',
+  'aiTools.title': 'AI Tools',
 
   'about.text': `Halo! Saya Galih, mahasiswa Sistem Informasi di Universitas Gunadarma.
     Saya mulai belajar web development di awal pandemi, berangkat dari forum-forum
