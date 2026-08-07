@@ -88,6 +88,21 @@ const TECH = {
 
 export const PROJECTS_ITEMS: Project[] = [
   {
+    url: 'https://zyvo-zeta.vercel.app',
+    name: 'Zyvo',
+    techStack: [
+      TECH.ts,
+      TECH.next,
+      TECH.react,
+      TECH.tailwind,
+      TECH.prisma,
+      TECH.trpc,
+      TECH.ai,
+    ],
+    description:
+      'AI-assisted CV/resume builder with live-preview editor, AI writing help, 9 designer templates, and print-quality PDF/PNG export.',
+  },
+  {
     url: 'https://warungmamania.vercel.app',
     name: 'Warung POS',
     techStack: [
