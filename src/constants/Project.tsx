@@ -90,6 +90,8 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://zyvo-zeta.vercel.app',
     name: 'Zyvo',
+    image: '/projects/zyvo.png',
+    imageAlt: 'Zyvo preview image',
     techStack: [
       TECH.ts,
       TECH.next,
@@ -105,6 +107,8 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://warungmamania.vercel.app',
     name: 'Warung POS',
+    image: '/projects/warungmamania.png',
+    imageAlt: 'Warung POS preview image',
     techStack: [
       TECH.ts,
       TECH.next,
@@ -119,12 +123,16 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://katalis-ai-xi.vercel.app',
     name: 'Katalis AI',
+    image: '/projects/katalis-ai.png',
+    imageAlt: 'Katalis AI preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.firebase, TECH.ai],
     description:
       'AI assistant for Indonesian MSME owners to manage finances, stock, and debts using only their voice.',
   },
   {
     url: 'https://github.com/mgalihpp/hyperliquid-tracker',
+    image: "https://github.com/mgalihpp/hyperliquid-tracker/raw/main/docs/dashboard-preview.png",
+    imageAlt: "Hyperliquid Tracker Dashboard Preview",
     name: 'Hyperliquid Tracker',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.reactQuery],
     description:
@@ -133,6 +141,8 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://forgy-forge.vercel.app/',
     name: 'Prompt Forge',
+    image: '/projects/prompt-forge.png',
+    imageAlt: 'Prompt Forge preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.prisma, TECH.ai],
     description:
       'Rewrites a quick thought into a structured, model-ready prompt for chat, image, code, writing, or research.',
@@ -140,6 +150,8 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://fiilo-gilt.vercel.app',
     name: 'Fiilo',
+    image: '/projects/fiilo.png',
+    imageAlt: 'Fiilo preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.prisma, TECH.ai],
     description:
       'Lets AI take over your file management, organizing and making sense of your documents automatically.',
@@ -147,6 +159,8 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://vibe-coder-tau.vercel.app',
     name: 'Vibe Coder',
+    image: '/projects/vibe-coder.png',
+    imageAlt: 'Vibe Coder preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.prisma, TECH.trpc],
     description:
       'AI app builder that turns natural language prompts into working applications, inspired by Lovable.',
@@ -161,6 +175,8 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://trywear-web.vercel.app',
     name: 'TryWear',
+    image: '/projects/trywear.png',
+    imageAlt: 'TryWear preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.express],
     description:
       'Modern e-commerce platform featuring a Virtual Try-On experience so shoppers can preview clothing before buying.',
@@ -183,6 +199,8 @@ export const PROJECTS_ITEMS: Project[] = [
   },
   {
     url: 'https://prd-generator-sepia-three.vercel.app',
+    image: 'https://github.com/mgalihpp/prd-generator/raw/main/.github/image4.png',
+    imageAlt: 'PRD Generator preview image',
     name: 'PRD Generator',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.ai],
     description:
@@ -191,6 +209,8 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://nexus-plum-three.vercel.app',
     name: 'Nexus',
+    image: '/projects/nexus.png',
+    imageAlt: 'Nexus preview image',
     techStack: [TECH.ts, TECH.vue, TECH.tailwind, TECH.vite],
     description:
       'Conference landing page bringing together global leaders and visionaries for two days of insights and breakthroughs.',
