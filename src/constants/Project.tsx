@@ -217,6 +217,8 @@ export const PROJECTS_ITEMS: Project[] = [
   },
   {
     url: 'https://github.com/mgalihpp/my-dlmm-bot',
+    image: '/projects/dlmm.png',
+    imageAlt: 'DLMM Bot preview image',
     name: 'DLMM Bot',
     techStack: [TECH.ts, TECH.node, TECH.telegram],
     description:
