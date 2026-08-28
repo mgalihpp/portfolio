@@ -1,8 +1,9 @@
+import AnimatedOutlet from '@/components/AnimatedOutlet';
 import Footer from '@/components/Footer';
 import MobileSideBar from '@/components/MobileSidebar';
 import Sidebar from '@/components/Sidebar';
 import TopLoadingBar from '@/components/TopLoadingBar';
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { ScrollRestoration } from 'react-router-dom';
 
 const RootLayout = () => {
   return (
@@ -10,10 +11,9 @@ const RootLayout = () => {
       <div className="md:flex lg:m-auto lg:max-w-5xl lg:justify-center">
         <Sidebar />
         <MobileSideBar />
-
         <div className="w-full lg:max-w-3xl">
           <main>
-            <Outlet />
+            <AnimatedOutlet />
           </main>
 
           <Footer />
