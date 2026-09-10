@@ -1,6 +1,6 @@
 import type { Language } from '@/providers/LanguageProvider';
 
-export const CV_FILE = 'https://eujut19kua.ufs.sh/f/DovWuZwOIqaW2XATOkLyUxEwRKk9Ma3dA6W0TGJQ7qrnjhpC';
+export const CV_FILE = 'https://eujut19kua.ufs.sh/f/DovWuZwOIqaWDU62WOwOIqaWfdlJGN1mFP6Vy4uER0esBMAc';
 
 type Localized = Record<Language, string>;
 
