@@ -19,6 +19,9 @@ export default defineConfig({
             if (id.includes('@sanity')) {
               return 'vendor-sanity';
             }
+            if (id.includes('posthog')) {
+              return 'vendor-posthog';
+            }
             if (id.includes('class-variance-authority')) {
               return 'vendor-class-variance-authority';
             }

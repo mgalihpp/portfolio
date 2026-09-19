@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer';
 import MobileSideBar from '@/components/MobileSidebar';
+import { PostHogPageView } from '@/components/PostHogPageView';
 import Sidebar from '@/components/Sidebar';
 import TopLoadingBar from '@/components/TopLoadingBar';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
@@ -7,6 +8,7 @@ import { Outlet, ScrollRestoration } from 'react-router-dom';
 const RootLayout = () => {
   return (
     <>
+      <PostHogPageView />
       <div className="md:flex lg:m-auto lg:max-w-5xl lg:justify-center">
         <Sidebar />
         <MobileSideBar />
