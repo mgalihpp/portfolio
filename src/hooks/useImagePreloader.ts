@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 
-export function useImagePreloader(ref: RefObject<HTMLImageElement>) {
+export function useImagePreloader(ref: RefObject<HTMLImageElement | null>) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {

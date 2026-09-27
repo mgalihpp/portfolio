@@ -2,35 +2,27 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import BlogCard from './BlogCard';
 import SearchBlog from './SearchBlog';
-import { useLanguage } from '@/providers/LanguageProvider';
+import type { BlogItem } from '../../lib/blog-types';
 
-interface BlogSectionProps {
-  blogs: BlogItem[];
-}
-
-export default function BlogSection(props: BlogSectionProps) {
-  const { t } = useLanguage();
+export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
   const [search, setSearch] = useState<string>('');
   const [sortedBlogs, setSortedBlogs] = useState<BlogItem[]>([]);
-  const [filteredBlogs, setFilteredBlogs] = useState(sortedBlogs);
+  const [filteredBlogs, setFilteredBlogs] = useState<BlogItem[]>([]);
 
   const sortBlogsByDate = useCallback(() => {
-    const sorted = [...props.blogs];
-    sorted.sort((a, b) => {
-      const dateA = new Date(a.publishedAt);
-      const dateB = new Date(b.publishedAt);
-      return dateB.getTime() - dateA.getTime();
-    });
+    const sorted = [...blogs];
+    sorted.sort(
+      (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    );
     setSortedBlogs(sorted);
-  }, [props.blogs]);
+  }, [blogs]);
 
   useEffect(() => {
     sortBlogsByDate();
   }, [sortBlogsByDate]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const lowercaseInput = event.target.value.toLowerCase();
-    setSearch(lowercaseInput);
+    setSearch(event.target.value.toLowerCase());
   };
 
   useEffect(() => {
@@ -43,9 +35,9 @@ export default function BlogSection(props: BlogSectionProps) {
             .toLowerCase()
             .split(' ')
             .every((cat) =>
-              blog.categories.some((category) => category.title.includes(cat))
-            )
-      )
+              blog.categories.some((category) => category.title.includes(cat)),
+            ),
+      ),
     );
   }, [search, sortedBlogs]);
 
@@ -58,30 +50,22 @@ export default function BlogSection(props: BlogSectionProps) {
     }
   };
 
-  const checkTagged = (tag: string) => {
-    return search.split(' ').includes(tag);
-  };
+  const checkTagged = (tag: string) => search.split(' ').includes(tag);
 
   const checkDisabled = (tag: string) => {
     if (search === '') return false;
-
-    const searchTerms = search
-      .toLowerCase()
-      .split(' ')
-      .filter((t) => t.trim() !== '');
-
+    const searchTerms = search.toLowerCase().split(' ').filter((t) => t.trim() !== '');
     const relatedBlogs = sortedBlogs.filter((blog) =>
       searchTerms.some(
         (term) =>
           blog.title.toLowerCase().includes(term) ||
           blog.description.toLowerCase().includes(term) ||
-          blog.categories.some((category) => category.title.includes(term))
-      )
+          blog.categories.some((category) => category.title.includes(term)),
+      ),
     );
-
     return (
       !relatedBlogs.some((blog) =>
-        blog.categories.some((category) => category.title.includes(tag))
+        blog.categories.some((category) => category.title.includes(tag)),
       ) && !searchTerms.includes(tag)
     );
   };
@@ -99,7 +83,6 @@ export default function BlogSection(props: BlogSectionProps) {
         checkDisabled={checkDisabled}
         checkTagged={checkTagged}
       />
-
       {filteredBlogs.length > 0 ? (
         <motion.ul
           initial={{ opacity: 0 }}
@@ -107,35 +90,14 @@ export default function BlogSection(props: BlogSectionProps) {
           transition={{ delay: 0.6 }}
           className="mt-4 grid gap-4 sm:grid-cols-2"
         >
-          {filteredBlogs.map((blog: BlogItem) => (
-            <BlogCard
-              key={blog._id}
-              _id={blog._id}
-              author={blog.author.name}
-              image={blog.mainImage.asset.url}
-              tags={blog.categories}
-              title={blog.title}
-              readingTime={blog.readingTime}
-              views={blog.views}
-              releaseDate={blog.publishedAt}
-              description={blog.description}
-              slug={blog.slug.current}
-              checkTagged={checkTagged}
-            />
+          {filteredBlogs.map((blog) => (
+            <BlogCard key={blog._id} blog={blog} checkTagged={checkTagged} />
           ))}
         </motion.ul>
       ) : (
-        <div
-          className="pb-12 pt-20 lg:flex lg:justify-center
-        lg:h-80 lg:pb-0 lg:pt-8"
-        >
-          <h2
-            className="gradient__text
-              m-auto w-fit
-              text-lg  font-bold
-              md:text-xl"
-          >
-            {t('blog.notFound')}
+        <div className="pb-12 pt-20 lg:flex lg:justify-center lg:h-80">
+          <h2 className="m-auto w-fit text-lg font-bold md:text-xl">
+            No posts found.
           </h2>
         </div>
       )}

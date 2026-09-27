@@ -1,77 +1,30 @@
-import SingleBlogPost from '@/components/Blog/SingleBlogPost';
-import { getBlog } from '@/helpers/getBlog';
-import RootBlogsLayout from '@/layouts/RootBlogsLayout';
-import RootLayout from '@/layouts/RootLayout';
-import { RouteObject } from 'react-router-dom';
-import About from './About';
-import Blogs from './Blogs';
-import Contact from './Contact';
-import Home from './Home';
-import Projects from './Projects';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { createFileRoute } from '@tanstack/react-router';
+import Career from '@/components/Home/Career';
+import Hero from '@/components/Home/Hero';
+import Stack from '@/components/Home/Stack';
+import AiTools from '@/components/Home/AiTools';
+import PageTitle from '@/components/elements/PageTitle';
+import { useLanguage } from '@/providers/LanguageProvider';
 
-export const routes: RouteObject[] = [
-  {
-    path: '/',
-    element: <RootLayout />,
-    errorElement: <ErrorBoundary />,
-    children: [
-      {
-        path: '',
-        element: <Home />,
-        loader: () => {
-          return new Promise((resolve) => setTimeout(() => resolve(true), 0));
-        },
-      },
-      {
-        path: 'about',
-        element: <About />,
-        loader: () => {
-          return new Promise((resolve) => setTimeout(() => resolve(true), 0));
-        },
-      },
-      {
-        path: 'projects',
-        element: <Projects />,
-        loader: () => {
-          return new Promise((resolve) => setTimeout(() => resolve(true), 0));
-        },
-      },
-      {
-        path: 'blog',
-        element: <RootBlogsLayout />,
-        children: [
-          {
-            path: '',
-            element: <Blogs />,
-            loader: async () => {
-              return getBlog({
-                query: '',
-                tags: '',
-                page: '1',
-              });
-            },
-          },
-          {
-            path: '/blog/:slug',
-            element: <SingleBlogPost />,
-            loader: async ({ params }) => {
-              return getBlog({
-                query: params.slug ?? '',
-                tags: '',
-                page: '1',
-              });
-            },
-          },
-        ],
-      },
-      {
-        path: 'contact',
-        element: <Contact />,
-        loader: () => {
-          return new Promise((resolve) => setTimeout(() => resolve(true), 0));
-        },
-      },
+export const Route = createFileRoute('/')({
+  head: () => ({
+    meta: [
+      { title: 'mgalihpp | Fullstack Developer' },
+      { name: 'description', content: 'Portfolio of mgalihpp.' },
     ],
-  },
-];
+  }),
+  component: HomePage,
+});
+
+function HomePage() {
+  const { t } = useLanguage();
+  return (
+    <div className="px-8 pb-5 pt-8">
+      <PageTitle title={t('page.home.title')} description={t('page.home.description')} />
+      <Hero />
+      <Career />
+      <Stack />
+      <AiTools />
+    </div>
+  );
+}

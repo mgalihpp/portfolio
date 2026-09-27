@@ -1,20 +1,11 @@
 import { useRef, useEffect } from 'react';
-import { useNavigation } from 'react-router-dom';
-import LoadingBar, { LoadingBarRef } from 'react-top-loading-bar';
-
+import { useRouterState } from '@tanstack/react-router';
+import LoadingBar from 'react-top-loading-bar';
+import type { LoadingBarRef } from 'react-top-loading-bar';
 const TopLoadingBar = () => {
   const ref = useRef<LoadingBarRef>(null);
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    if (navigation.state === 'loading') {
-      ref.current?.continuousStart();
-    } else {
-      ref.current?.complete();
-    }
-  }, [navigation]);
-
-  return <LoadingBar color='#8e9eab' ref={ref} />;
+  const isLoading = useRouterState({ select: (s) => s.isLoading });
+  useEffect(() => { if (isLoading) ref.current?.continuousStart(); else ref.current?.complete(); }, [isLoading]);
+  return <LoadingBar color="#8e9eab" ref={ref} />;
 };
-
 export default TopLoadingBar;

@@ -24,3 +24,16 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.output
+
+.nitro
+
+.tanstack
+
+.wrangler
+
+.vinxi
+
+__unconfig*
+
+todos.json

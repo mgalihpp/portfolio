@@ -1,6 +1,6 @@
 import { SOCIAL_LINKS } from '@/constants/SosialLinks';
 import { Separator } from './Separator';
-import { Link } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 import { useLanguage } from '@/providers/LanguageProvider';
 
 export default function Footer() {

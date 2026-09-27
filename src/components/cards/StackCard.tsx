@@ -2,7 +2,7 @@ import React from 'react';
 
 type StackCardProps = {
   name: string;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
 };
 
 const StackCard: React.FC<StackCardProps> = ({ name, icon }) => {

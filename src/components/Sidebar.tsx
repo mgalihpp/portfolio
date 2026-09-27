@@ -2,7 +2,7 @@ import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { Separator } from './Separator';
 import { NAVLINK_ITEMS } from '@/constants/NavLink';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from '@tanstack/react-router';
 import { useLanguage } from '@/providers/LanguageProvider';
 
 const Sidebar = () => {

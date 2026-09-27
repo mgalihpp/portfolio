@@ -1,6 +1,7 @@
+import type * as React from 'react';
 interface TechStack {
   label: string;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
 }
 
 interface Project {

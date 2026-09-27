@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 import { useLanguage } from '@/providers/LanguageProvider';
 
 function MobileSideBar() {

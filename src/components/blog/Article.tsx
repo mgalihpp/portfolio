@@ -1,37 +1,26 @@
 import BlockContent from '@sanity/block-content-to-react';
-import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { useLanguage } from '@/providers/LanguageProvider';
-import '@/styles/blogDetails.css';
+import { useCopyToClipboard } from '../../hooks/useCopyToClipboard';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import clsx from 'clsx';
 import * as React from 'react';
 import { BiCheckDouble, BiSolidCopyAlt } from 'react-icons/bi';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-interface ArticleProps {
-  content: unknown;
-}
-
-export default function Article({ content }: ArticleProps) {
-  const { t } = useLanguage();
-  const [value, copy] = useCopyToClipboard();
+export default function Article({ content }: { content: unknown }) {
+  const [, copy] = useCopyToClipboard();
   const [isCopied, setIsCopied] = React.useState<boolean>(false);
   const isTableSize = useMediaQuery('(min-width: 768px)');
   const isLaptopSize = useMediaQuery('(min-width: 1024px)');
 
   const handleCopy = (code: string) => {
     copy(code);
-    console.log('Copied', value);
     setIsCopied(true);
   };
 
   React.useEffect(() => {
     if (isCopied) {
-      const timeout = setTimeout(() => {
-        setIsCopied(false);
-      }, 2000);
-
+      const timeout = setTimeout(() => setIsCopied(false), 2000);
       return () => clearTimeout(timeout);
     }
   }, [isCopied]);
@@ -43,85 +32,62 @@ export default function Article({ content }: ArticleProps) {
           <SyntaxHighlighter
             language={props.node.language}
             style={a11yDark}
-            customStyle={{
-              padding: '16px',
-              fontSize: '14px',
-              borderRadius: '8px',
-            }}
+            customStyle={{ padding: '16px', fontSize: '14px', borderRadius: '8px' }}
             PreTag="pre"
             wrapLongLines={isTableSize ? (isLaptopSize ? false : true) : false}
           >
             {props.node.code}
           </SyntaxHighlighter>
-
           <button
-            className={clsx(
-              'absolute right-1 top-1',
-              'primary rounded-md p-2 text-sm'
-            )}
+            className={clsx('absolute right-1 top-1', 'rounded-md p-2 text-sm')}
             onClick={() => handleCopy(props.node.code)}
-            aria-label={t('blog.copyCode')}
+            aria-label="Copy code"
           >
             {!isCopied ? (
-              <BiSolidCopyAlt size={18} className="text-neutral-200" />
+              <BiSolidCopyAlt size={18} />
             ) : (
-              <BiCheckDouble size={18} className="text-green-300" />
+              <BiCheckDouble size={18} />
             )}
           </button>
         </div>
       ),
-
       block: (props: {
         node: { style: string; _key: string };
         children: React.ReactNode;
       }) => {
         const { node, children } = props;
         const { style, _key } = node;
-
         if (
           style.startsWith('h') &&
           style.length === 2 &&
           parseInt(style[1]) >= 2 &&
           parseInt(style[1]) <= 6
         ) {
-          const HeadingTag = style as keyof JSX.IntrinsicElements;
-          const headingId = _key;
+          const HeadingTag = style as keyof React.JSX.IntrinsicElements;
           return (
-            <HeadingTag id={headingId} className="scroll-mt-28">
+            <HeadingTag id={_key} className="scroll-mt-28">
               {children}
             </HeadingTag>
           );
-        } else {
-          return <p>{children}</p>;
         }
+        return <p>{children}</p>;
       },
-
       image: (props: { node: { alt: string; asset: { _ref: string } } }) => {
         const url = props.node.asset._ref;
         const cleanUrl = url
           .replace('image-', '')
           .replace('-webp', '.webp')
           .replace('-gif', '.gif');
-
-        const projectId = 'g4pufrpg';
-        const dataset = 'production';
-        const uri = `https://cdn.sanity.io/images/${projectId}/${dataset}/${cleanUrl}`;
-
+        const uri = `https://cdn.sanity.io/images/g4pufrpg/production/${cleanUrl}`;
         return (
-          <img
-            src={uri}
-            alt={props.node.alt}
-            width={1920}
-            height={1080}
-            className="h-auto w-auto"
-          />
+          <img src={uri} alt={props.node.alt} width={1920} height={1080} />
         );
       },
     },
   };
 
   return (
-    <article className={'content'}>
+    <article>
       <BlockContent
         blocks={content}
         projectId={'g4pufrpg'}

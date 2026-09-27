@@ -58,7 +58,7 @@ declare module "@sanity/block-content-to-react"
        * />
        * ```
        */
-      types?: Record<string, (props: any) => JSX.Element | null>
+      types?: Record<string, (props: any) => React.JSX.Element | null>
       /**
        * Serializers for marks - data that annotates a text child of a block.
        * @example
@@ -92,7 +92,7 @@ declare module "@sanity/block-content-to-react"
        * />
        * ```
        */
-      marks?: Record<string, (props: any) => JSX.Element | null>
+      marks?: Record<string, (props: any) => React.JSX.Element | null>
       /** React component to use when rendering a list node */
       list?: React.Component
       /** React component to use when rendering a list item node */
@@ -117,5 +117,5 @@ declare module "@sanity/block-content-to-react"
   }
 
   /** React component for transforming Sanity block content to React components */
-  export default function BlockContent(props: BlockContentProps): JSX.Element
+  export default function BlockContent(props: BlockContentProps): React.JSX.Element
 }

@@ -37,5 +37,3 @@ export function extractHeadings(blocks: BlogItem['content']) {
   });
   return headings;
 }
-
-export const normalizePath = (path: string) => path.replace(/\/+$/, "");

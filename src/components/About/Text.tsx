@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Separator } from '@/components/Separator';
 
 type TextProps = {

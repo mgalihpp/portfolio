@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { AI_TOOLS } from '@/constants/AiTools';
 import { motion } from 'framer-motion';
 import { HiSparkles } from 'react-icons/hi2';
@@ -7,7 +8,7 @@ import { useLanguage } from '@/providers/LanguageProvider';
 const AiTools = () => {
   const { t } = useLanguage();
 
-  const aiToolsInArray: Array<[string, JSX.Element]> = Object.entries(AI_TOOLS);
+  const aiToolsInArray: Array<[string, React.JSX.Element]> = Object.entries(AI_TOOLS);
 
   return (
     <motion.section

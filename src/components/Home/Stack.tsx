@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { STACKS } from '@/constants/Stacks';
 import { motion } from 'framer-motion';
 import { HiOutlineCode } from 'react-icons/hi';
@@ -8,7 +9,7 @@ import { useLanguage } from '@/providers/LanguageProvider';
 const Stack = () => {
   const { t } = useLanguage();
 
-  const stackInArray: Array<[string, JSX.Element]> = Object.entries(
+  const stackInArray: Array<[string, React.JSX.Element]> = Object.entries(
     STACKS,
   ).sort(() => Math.random() - 0.5);
 

@@ -1,9 +1,10 @@
+import type * as React from 'react';
 import ClaudeIcon from '@/components/icons/ClaudeIcon';
 import CodexIcon from '@/components/icons/CodexIcon';
 import OpenCodeIcon from '@/components/icons/OpenCodeIcon';
 
 type aiToolsProps = {
-  [key: string]: JSX.Element;
+  [key: string]: React.JSX.Element;
 };
 
 const ICON_SIZE: number = 24;

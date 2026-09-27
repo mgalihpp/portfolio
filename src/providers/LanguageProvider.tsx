@@ -48,7 +48,7 @@ export function LanguageProvider({
   ...props
 }: LanguageProviderProps) {
   const [language, setLanguage] = useState<Language>(() => {
-    const stored = localStorage.getItem(storageKey) as Language | null;
+    const stored = typeof window === 'undefined' ? null : localStorage.getItem(storageKey) as Language | null;
 
     if (stored === 'en' || stored === 'id') return stored;
 
@@ -56,13 +56,13 @@ export function LanguageProvider({
   });
 
   useEffect(() => {
-    document.documentElement.lang = language;
+    if (typeof document !== 'undefined') document.documentElement.lang = language;
   }, [language]);
 
   const value = {
     language,
     setLanguage: (language: Language) => {
-      localStorage.setItem(storageKey, language);
+      if (typeof window !== 'undefined') localStorage.setItem(storageKey, language);
       setLanguage(language);
     },
     t: (key: TranslationKey, params?: Record<string, string | number>) => {

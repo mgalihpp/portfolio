@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { FaRegPaperPlane } from 'react-icons/fa';
 import { GoProjectSymlink } from 'react-icons/go';
@@ -8,7 +9,7 @@ import type { TranslationKey } from '@/constants/locales/en';
 const ICON_SIZE: number = 24;
 
 type NavLinkItem = {
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   pathname: string;
   labelKey: TranslationKey;
 };

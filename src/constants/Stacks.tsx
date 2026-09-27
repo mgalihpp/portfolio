@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { BiLogoPostgresql } from "react-icons/bi";
 import {
   SiCss3,
@@ -21,7 +22,7 @@ import {
 } from "react-icons/si";
 
 type stacksProps = {
-  [key: string]: JSX.Element;
+  [key: string]: React.JSX.Element;
 };
 
 const ICON_SIZE: number = 24;

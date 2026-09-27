@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Ping from '@/components/elements/Ping';
-import { Link } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 import { SiGmail } from 'react-icons/si';
 import { Separator } from '@/components/Separator';
 import { useLanguage } from '@/providers/LanguageProvider';

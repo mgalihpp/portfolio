@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 import Ping from '../elements/Ping';
 import { TbArrowUpRight } from 'react-icons/tb';
 import Tooltip from '../elements/Tooltip';

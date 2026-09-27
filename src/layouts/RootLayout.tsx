@@ -3,7 +3,7 @@ import MobileSideBar from '@/components/MobileSidebar';
 import { PostHogPageView } from '@/components/PostHogPageView';
 import Sidebar from '@/components/Sidebar';
 import TopLoadingBar from '@/components/TopLoadingBar';
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { Outlet } from '@tanstack/react-router';
 
 const RootLayout = () => {
   return (
@@ -23,15 +23,7 @@ const RootLayout = () => {
       </div>
 
       <TopLoadingBar />
-      <ScrollRestoration
-        getKey={(location) => {
-          const paths = ['/', '/about', '/contact', '/projects', '/blog'];
-
-          return paths.includes(location.pathname)
-            ? location.pathname
-            : location.key;
-        }}
-      />
+      
     </>
   );
 };
