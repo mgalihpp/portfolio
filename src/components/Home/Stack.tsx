@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { STACKS } from '@/constants/Stacks';
 import { motion } from 'framer-motion';
 import { HiOutlineCode } from 'react-icons/hi';
@@ -6,12 +7,23 @@ import Marquee from '../elements/Marquee';
 import StackCard from '../cards/StackCard';
 import { useLanguage } from '@/providers/LanguageProvider';
 
+type StackEntry = [string, React.JSX.Element];
+
+const shuffle = (entries: StackEntry[]): StackEntry[] =>
+  [...entries].sort(() => Math.random() - 0.5);
+
 const Stack = () => {
   const { t } = useLanguage();
 
-  const stackInArray: Array<[string, React.JSX.Element]> = Object.entries(
-    STACKS,
-  ).sort(() => Math.random() - 0.5);
+  const baseStacks = useMemo<StackEntry[]>(
+    () => Object.entries(STACKS),
+    [],
+  );
+  const [rows, setRows] = useState<StackEntry[][]>([baseStacks, baseStacks]);
+
+  useEffect(() => {
+    setRows([shuffle(baseStacks), shuffle(baseStacks)]);
+  }, [baseStacks]);
 
   return (
     <motion.section
@@ -25,17 +37,13 @@ const Stack = () => {
       </div>
 
       <div className='flex flex-col md:max-w-[calc(100vw-156px)] lg:max-w-[720px]'>
-        {Array.from({ length: 2 }, (_, index) => {
-          const slider = [...stackInArray].sort(() => Math.random() - 0.5);
-
-          return (
-            <Marquee key={index} direction={index % 2 === 0 ? 'left' : 'right'}>
-              {slider.map(([name, icon], index) => (
-                <StackCard key={index} name={name} icon={icon} />
-              ))}
-            </Marquee>
-          );
-        })}
+        {rows.map((slider, index) => (
+          <Marquee key={index} direction={index % 2 === 0 ? 'left' : 'right'}>
+            {slider.map(([name, icon], cardIndex) => (
+              <StackCard key={`${name}-${cardIndex}`} name={name} icon={icon} />
+            ))}
+          </Marquee>
+        ))}
       </div>
     </motion.section>
   );
