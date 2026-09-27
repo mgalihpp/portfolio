@@ -9,6 +9,14 @@ import { nitro } from 'nitro/vite'
 const config = defineConfig({
   resolve: { tsconfigPaths: true },
   plugins: [devtools(), nitro(), tanstackStart(), viteReact()],
+  build: {
+    rollupOptions: {
+      onLog(level, log, defaultHandler) {
+        if (log.code === 'MODULE_LEVEL_DIRECTIVE') return;
+        defaultHandler(level, log);
+      },
+    },
+  },
 })
 
 export default config
