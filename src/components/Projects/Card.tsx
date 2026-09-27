@@ -19,7 +19,7 @@ export default function Card(props: ProjectCardProps) {
 
   return (
     <motion.li
-      initial={{ opacity: 0 }}
+      initial={false}
       animate={{ opacity: 1 }}
       transition={{ delay: 0 }}
       className="border__color rounded-md bg-transparent shadow-lg transition-transform duration-200 dark:bg-neutral-800 dark:shadow-none lg:hover:scale-[1.03]"

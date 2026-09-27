@@ -9,7 +9,7 @@ type TextProps = {
 const Text: FC<TextProps> = ({ text }) => {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0 }}
     >

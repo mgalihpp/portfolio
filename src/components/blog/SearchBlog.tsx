@@ -24,7 +24,7 @@ export default function SearchBlog({
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0 }}
       >
@@ -51,7 +51,7 @@ export default function SearchBlog({
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0 }}
         className="mb-8 mt-2 flex flex-wrap justify-start gap-2 text-sm"

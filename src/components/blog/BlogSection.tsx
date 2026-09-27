@@ -74,7 +74,7 @@ export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0 }}
     >
@@ -87,7 +87,7 @@ export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
       />
       {filteredBlogs.length > 0 ? (
         <motion.ul
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ delay: 0 }}
           className="mt-4 grid gap-4 sm:grid-cols-2"
