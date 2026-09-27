@@ -11,6 +11,7 @@ import TopLoadingBar from '@/components/TopLoadingBar';
 import indexCss from '../index.css?url';
 import blogCss from '../styles/blogDetails.css?url';
 import { NotFound } from '@/components/NotFound';
+import { EntranceEnabler } from '@/hooks/useEntrance';
 
 const TanStackDevtoolsShell = import.meta.env.DEV
   ? lazy(() =>
@@ -94,6 +95,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 </div>
               </div>
               <TopLoadingBar />
+              <EntranceEnabler />
             </LanguageProvider>
           </ThemeProvider>
         </PostHogAppProvider>

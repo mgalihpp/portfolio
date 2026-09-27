@@ -1,4 +1,5 @@
 import { SOCIAL_LINKS } from '@/constants/SosialLinks';
+import { useEntrance } from '@/hooks/useEntrance';
 import { motion } from 'framer-motion';
 import SocialCard from '../cards/SosialCard';
 import { useLanguage } from '@/providers/LanguageProvider';
@@ -7,7 +8,7 @@ export default function SocialLinks() {
   const { t } = useLanguage();
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
+      initial={useEntrance({opacity: 0, y: 50})}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >

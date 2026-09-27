@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEntrance } from '@/hooks/useEntrance';
 import type { FC } from 'react';
 import { Separator } from '@/components/Separator';
 
@@ -9,7 +10,7 @@ type TextProps = {
 const Text: FC<TextProps> = ({ text }) => {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
+      initial={useEntrance({opacity: 0, y: 50})}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >

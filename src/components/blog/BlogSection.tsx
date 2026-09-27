@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useEntrance } from '@/hooks/useEntrance';
 import { motion } from 'framer-motion';
 import BlogCard from './BlogCard';
 import SearchBlog from './SearchBlog';
@@ -74,7 +75,7 @@ export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
+      initial={useEntrance({opacity: 0, y: 50})}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
@@ -87,7 +88,7 @@ export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
       />
       {filteredBlogs.length > 0 ? (
         <motion.ul
-          initial={{ opacity: 0 }}
+          initial={useEntrance({opacity: 0})}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
           className="mt-4 grid gap-4 sm:grid-cols-2"

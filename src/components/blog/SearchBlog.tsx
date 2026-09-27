@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useEntrance } from '@/hooks/useEntrance';
 import { motion } from 'framer-motion';
 import { TAGS } from '../../constants/Tag';
 import Tag from '../elements/Tag';
@@ -24,7 +25,7 @@ export default function SearchBlog({
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={useEntrance({opacity: 0, y: 50})}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
@@ -51,7 +52,7 @@ export default function SearchBlog({
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={useEntrance({opacity: 0, y: 50})}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         className="mb-8 mt-2 flex flex-wrap justify-start gap-2 text-sm"

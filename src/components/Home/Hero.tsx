@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEntrance } from '@/hooks/useEntrance';
 import Ping from '@/components/elements/Ping';
 import { Link } from '@tanstack/react-router';
 import { SiGmail } from 'react-icons/si';
@@ -10,7 +11,7 @@ const Hero = () => {
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
+      initial={useEntrance({opacity: 0, y: 50})}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >

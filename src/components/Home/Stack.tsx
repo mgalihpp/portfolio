@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { useEntrance } from '@/hooks/useEntrance';
 import { useEffect, useMemo, useState } from 'react';
 import { STACKS } from '@/constants/Stacks';
 import { motion } from 'framer-motion';
@@ -27,7 +28,7 @@ const Stack = () => {
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
+      initial={useEntrance({opacity: 0, y: 50})}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
     >

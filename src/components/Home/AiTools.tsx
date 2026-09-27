@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { useEntrance } from '@/hooks/useEntrance';
 import { AI_TOOLS } from '@/constants/AiTools';
 import { motion } from 'framer-motion';
 import { HiSparkles } from 'react-icons/hi2';
@@ -12,7 +13,7 @@ const AiTools = () => {
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
+      initial={useEntrance({opacity: 0, y: 50})}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
     >
