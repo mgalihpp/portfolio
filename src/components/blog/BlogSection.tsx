@@ -2,9 +2,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import BlogCard from './BlogCard';
 import SearchBlog from './SearchBlog';
+import { useLanguage } from '@/providers/LanguageProvider';
 import type { BlogItem } from '../../lib/blog-types';
 
 export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
+  const { t } = useLanguage();
   const [search, setSearch] = useState<string>('');
   const [sortedBlogs, setSortedBlogs] = useState<BlogItem[]>([]);
   const [filteredBlogs, setFilteredBlogs] = useState<BlogItem[]>([]);
@@ -90,14 +92,35 @@ export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
           transition={{ delay: 0.6 }}
           className="mt-4 grid gap-4 sm:grid-cols-2"
         >
-          {filteredBlogs.map((blog) => (
-            <BlogCard key={blog._id} blog={blog} checkTagged={checkTagged} />
+          {filteredBlogs.map((blog: BlogItem) => (
+            <BlogCard
+              key={blog._id}
+              _id={blog._id}
+              author={blog.author.name}
+              image={blog.mainImage.asset.url}
+              tags={blog.categories}
+              title={blog.title}
+              readingTime={blog.readingTime}
+              views={blog.views}
+              releaseDate={blog.publishedAt}
+              description={blog.description}
+              slug={blog.slug.current}
+              checkTagged={checkTagged}
+            />
           ))}
         </motion.ul>
       ) : (
-        <div className="pb-12 pt-20 lg:flex lg:justify-center lg:h-80">
-          <h2 className="m-auto w-fit text-lg font-bold md:text-xl">
-            No posts found.
+        <div
+          className="pb-12 pt-20 lg:flex lg:justify-center
+        lg:h-80 lg:pb-0 lg:pt-8"
+        >
+          <h2
+            className="gradient__text
+              m-auto w-fit
+              text-lg  font-bold
+              md:text-xl"
+          >
+            {t('blog.notFound')}
           </h2>
         </div>
       )}

@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { BLOG_TAGS } from '../../constants/blog-tags';
-import { Tag } from './primitives';
+import { TAGS } from '../../constants/Tag';
+import Tag from '../elements/Tag';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 interface SearchBlogProps {
   search: string;
@@ -18,6 +19,8 @@ export default function SearchBlog({
   checkTagged,
   checkDisabled,
 }: SearchBlogProps) {
+  const { t } = useLanguage();
+
   return (
     <>
       <motion.div
@@ -25,31 +28,46 @@ export default function SearchBlog({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <label htmlFor="search">Search blog</label>
+        <label htmlFor="search" className="primary text-sm md:text-base">
+          {t('blog.search')}
+        </label>
         <input
           id="search"
           type="search"
-          placeholder="Search by title, description, or tag..."
+          placeholder={t('blog.searchPlaceholder')}
           value={search}
           onChange={handleSearch}
-          className={clsx('mt-2 w-full px-2 py-3', 'rounded-md bg-transparent border')}
+          className={clsx(
+            'border__color',
+            'secondary text-sm',
+            'mt-2 w-full px-2 py-3',
+            'rounded-md bg-transparent',
+            'placeholder:text-sm placeholder:text-neutral-500',
+            'focus:outline-double focus:outline-neutral-500',
+            'md:text-base md:placeholder:text-base',
+          )}
           autoComplete="off"
         />
       </motion.div>
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         className="mb-8 mt-2 flex flex-wrap justify-start gap-2 text-sm"
       >
-        <span>Choose topic:</span>
-        {BLOG_TAGS.map((tag) => (
+        <span className="primary text-sm md:text-base">{t('blog.chooseTopic')}</span>
+        {TAGS.map((tag) => (
           <Tag
             key={tag}
             onClick={() => toggleTag(tag)}
             disabled={checkDisabled(tag)}
           >
-            {checkTagged(tag) ? <span>{tag}</span> : tag}
+            {checkTagged(tag) ? (
+              <span className="gradient__text">{tag}</span>
+            ) : (
+              tag
+            )}
           </Tag>
         ))}
       </motion.div>

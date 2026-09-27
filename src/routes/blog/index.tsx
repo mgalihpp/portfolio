@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { fetchBlogs } from '../../server/blog';
 import BlogSection from '../../components/blog/BlogSection';
+import PageTitle from '@/components/elements/PageTitle';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 export const Route = createFileRoute('/blog/')({
   loader: async () => fetchBlogs(),
@@ -15,10 +17,11 @@ export const Route = createFileRoute('/blog/')({
 
 function BlogListPage() {
   const blogs = Route.useLoaderData();
+  const { t } = useLanguage();
   return (
-    <main style={{ padding: 24 }}>
-      <h1>Blog</h1>
+    <div className="px-8 pb-5 pt-8">
+      <PageTitle title={t('page.blogs.title')} description={t('page.blogs.description')} />
       <BlogSection blogs={blogs} />
-    </main>
+    </div>
   );
 }

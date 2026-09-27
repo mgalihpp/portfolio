@@ -1,6 +1,7 @@
 import BlockContent from '@sanity/block-content-to-react';
 import { useCopyToClipboard } from '../../hooks/useCopyToClipboard';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useLanguage } from '@/providers/LanguageProvider';
 import clsx from 'clsx';
 import * as React from 'react';
 import { BiCheckDouble, BiSolidCopyAlt } from 'react-icons/bi';
@@ -8,6 +9,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function Article({ content }: { content: unknown }) {
+  const { t } = useLanguage();
   const [, copy] = useCopyToClipboard();
   const [isCopied, setIsCopied] = React.useState<boolean>(false);
   const isTableSize = useMediaQuery('(min-width: 768px)');
@@ -39,14 +41,17 @@ export default function Article({ content }: { content: unknown }) {
             {props.node.code}
           </SyntaxHighlighter>
           <button
-            className={clsx('absolute right-1 top-1', 'rounded-md p-2 text-sm')}
+            className={clsx(
+              'absolute right-1 top-1',
+              'primary rounded-md p-2 text-sm'
+            )}
             onClick={() => handleCopy(props.node.code)}
-            aria-label="Copy code"
+            aria-label={t('blog.copyCode')}
           >
             {!isCopied ? (
-              <BiSolidCopyAlt size={18} />
+              <BiSolidCopyAlt size={18} className="text-neutral-200" />
             ) : (
-              <BiCheckDouble size={18} />
+              <BiCheckDouble size={18} className="text-green-300" />
             )}
           </button>
         </div>
@@ -80,14 +85,20 @@ export default function Article({ content }: { content: unknown }) {
           .replace('-gif', '.gif');
         const uri = `https://cdn.sanity.io/images/g4pufrpg/production/${cleanUrl}`;
         return (
-          <img src={uri} alt={props.node.alt} width={1920} height={1080} />
+          <img
+            src={uri}
+            alt={props.node.alt}
+            width={1920}
+            height={1080}
+            className="h-auto w-auto"
+          />
         );
       },
     },
   };
 
   return (
-    <article>
+    <article className={'content'}>
       <BlockContent
         blocks={content}
         projectId={'g4pufrpg'}
