@@ -8,9 +8,9 @@ export default function Education() {
 
   return (
     <motion.section
-      initial={false}
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0 }}
+      transition={{ delay: 0.4 }}
     >
       <h2 className='primary text-lg font-semibold md:text-xl'>
         {t('education.title')}

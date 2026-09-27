@@ -10,9 +10,9 @@ const Hero = () => {
 
   return (
     <motion.section
-      initial={false}
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0 }}
+      transition={{ delay: 0.2 }}
     >
       <h1 className='primary mb-4 text-xl font-bold min-[347px]:text-2xl md:text-3xl'>
         {t('hero.greeting')} <span className='gradient__text'>Galih</span>

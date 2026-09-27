@@ -24,9 +24,9 @@ export default function SearchBlog({
   return (
     <>
       <motion.div
-        initial={false}
+        initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0 }}
+        transition={{ delay: 0.2 }}
       >
         <label htmlFor="search" className="primary text-sm md:text-base">
           {t('blog.search')}
@@ -51,9 +51,9 @@ export default function SearchBlog({
       </motion.div>
 
       <motion.div
-        initial={false}
+        initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0 }}
+        transition={{ delay: 0.4 }}
         className="mb-8 mt-2 flex flex-wrap justify-start gap-2 text-sm"
       >
         <span className="primary text-sm md:text-base">{t('blog.chooseTopic')}</span>
