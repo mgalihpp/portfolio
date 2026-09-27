@@ -8,9 +8,10 @@ type TextProps = {
 };
 
 const Text: FC<TextProps> = ({ text }) => {
+  const textEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={textEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >

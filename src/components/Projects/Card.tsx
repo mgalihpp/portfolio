@@ -18,9 +18,10 @@ export default function Card(props: ProjectCardProps) {
 
   const imageLoaded = useImagePreloader(imgRef);
 
+  const cardEntrance = useEntrance({opacity: 0});
   return (
     <motion.li
-      initial={useEntrance({opacity: 0})}
+      initial={cardEntrance}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.4 }}
       className="border__color rounded-md bg-transparent shadow-lg transition-transform duration-200 dark:bg-neutral-800 dark:shadow-none lg:hover:scale-[1.03]"

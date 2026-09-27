@@ -26,9 +26,10 @@ const Stack = () => {
     setRows([shuffle(baseStacks), shuffle(baseStacks)]);
   }, [baseStacks]);
 
+  const stackEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={stackEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
     >

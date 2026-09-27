@@ -9,9 +9,10 @@ import { useLanguage } from '@/providers/LanguageProvider';
 const Hero = () => {
   const { t } = useLanguage();
 
+  const heroEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={heroEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >

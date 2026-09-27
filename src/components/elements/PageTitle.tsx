@@ -9,8 +9,9 @@ type PageTitleProps = {
 };
 
 const PageTitle = (props: PageTitleProps) => {
+  const pageEntrance = useEntrance({opacity: 0, y: -50});
   return (
-    <motion.div initial={useEntrance({opacity: 0, y: -50})} animate={{ opacity: 1, y: 0 }}>
+    <motion.div initial={pageEntrance} animate={{ opacity: 1, y: 0 }}>
       <Meta title={props.title} description={props.description} />
 
       <h1 className='primary text-xl font-bold md:text-2xl'>{props.title}</h1>

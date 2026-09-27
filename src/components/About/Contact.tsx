@@ -5,9 +5,10 @@ import { useLanguage } from '@/providers/LanguageProvider';
 export default function Contact() {
   const { t } = useLanguage();
 
+  const contactEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={contactEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
     >

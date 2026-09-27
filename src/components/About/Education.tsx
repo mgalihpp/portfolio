@@ -7,9 +7,10 @@ import { useLanguage } from '@/providers/LanguageProvider';
 export default function Education() {
   const { language, t } = useLanguage();
 
+  const eduEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={eduEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
     >

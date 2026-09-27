@@ -11,9 +11,10 @@ const AiTools = () => {
 
   const aiToolsInArray: Array<[string, React.JSX.Element]> = Object.entries(AI_TOOLS);
 
+  const toolsEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={toolsEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
     >

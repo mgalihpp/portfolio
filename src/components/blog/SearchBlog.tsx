@@ -22,10 +22,12 @@ export default function SearchBlog({
 }: SearchBlogProps) {
   const { t } = useLanguage();
 
+  const searchEntrance = useEntrance({opacity: 0, y: 50});
+  const tagsEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <>
       <motion.div
-        initial={useEntrance({opacity: 0, y: 50})}
+        initial={searchEntrance}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
@@ -52,7 +54,7 @@ export default function SearchBlog({
       </motion.div>
 
       <motion.div
-        initial={useEntrance({opacity: 0, y: 50})}
+        initial={tagsEntrance}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         className="mb-8 mt-2 flex flex-wrap justify-start gap-2 text-sm"

@@ -6,9 +6,10 @@ import { useLanguage } from '@/providers/LanguageProvider';
 
 export default function SocialLinks() {
   const { t } = useLanguage();
+  const socialEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={socialEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >

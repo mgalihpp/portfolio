@@ -73,9 +73,11 @@ export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
     );
   };
 
+  const sectionEntrance = useEntrance({opacity: 0, y: 50});
+  const listEntrance = useEntrance({opacity: 0});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={sectionEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
@@ -88,7 +90,7 @@ export default function BlogSection({ blogs }: { blogs: BlogItem[] }) {
       />
       {filteredBlogs.length > 0 ? (
         <motion.ul
-          initial={useEntrance({opacity: 0})}
+          initial={listEntrance}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
           className="mt-4 grid gap-4 sm:grid-cols-2"

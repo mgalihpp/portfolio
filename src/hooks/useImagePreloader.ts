@@ -1,4 +1,5 @@
-import { RefObject, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import type { RefObject } from 'react';
 
 export function useImagePreloader(ref: RefObject<HTMLImageElement | null>) {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -8,8 +9,7 @@ export function useImagePreloader(ref: RefObject<HTMLImageElement | null>) {
     if (imgElement) {
       const handleLoad = () => setImageLoaded(true);
 
-      // Check if the image is already loaded
-      if (imgElement.complete) {
+      if (imgElement.complete && imgElement.naturalWidth > 0) {
         handleLoad();
       } else {
         imgElement.addEventListener('load', handleLoad);

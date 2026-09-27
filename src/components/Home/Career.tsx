@@ -8,9 +8,10 @@ import { useLanguage } from '@/providers/LanguageProvider';
 const Career = () => {
   const { language, t } = useLanguage();
 
+  const careerEntrance = useEntrance({opacity: 0, y: 50});
   return (
     <motion.section
-      initial={useEntrance({opacity: 0, y: 50})}
+      initial={careerEntrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
     >
