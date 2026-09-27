@@ -1,4 +1,5 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router';
+import { Suspense, lazy } from 'react';
+import { HeadContent, Scripts, createRootRoute, useRouter } from '@tanstack/react-router';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import { LanguageProvider } from '@/providers/LanguageProvider';
 import { PostHogAppProvider } from '@/providers/PostHogProvider';
@@ -9,6 +10,32 @@ import Sidebar from '@/components/Sidebar';
 import TopLoadingBar from '@/components/TopLoadingBar';
 import indexCss from '../index.css?url';
 import blogCss from '../styles/blogDetails.css?url';
+import { NotFound } from '@/components/NotFound';
+
+const TanStackDevtoolsShell = import.meta.env.DEV
+  ? lazy(() =>
+      Promise.all([
+        import('@tanstack/react-devtools'),
+        import('@tanstack/react-router-devtools'),
+      ]).then(([devtools, routerDevtools]) => ({
+        default: function DevtoolsWithRouterPanel() {
+          const router = useRouter();
+          const Shell = devtools.TanStackDevtools;
+          const RouterPanel = routerDevtools.TanStackRouterDevtoolsPanel;
+          return (
+            <Shell
+              plugins={[
+                {
+                  name: 'TanStack Router',
+                  render: <RouterPanel router={router} />,
+                },
+              ]}
+            />
+          );
+        },
+      })),
+    )
+  : () => null;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -30,6 +57,7 @@ export const Route = createRootRoute({
     ],
   }),
   shellComponent: RootDocument,
+  notFoundComponent: NotFound,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -60,6 +88,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             </LanguageProvider>
           </ThemeProvider>
         </PostHogAppProvider>
+        <Suspense fallback={null}>
+          <TanStackDevtoolsShell />
+        </Suspense>
         <Scripts />
       </body>
     </html>
