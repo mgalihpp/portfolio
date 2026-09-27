@@ -1,17 +1,19 @@
-import { Suspense, lazy } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
+import Contact from '@/components/About/Contact';
+import Text from '@/components/About/Text';
+import Education from '@/components/About/Education';
 import PageTitle from '@/components/elements/PageTitle';
-import { SectionSkeleton } from '@/components/elements/SectionSkeleton';
 import { useLanguage } from '@/providers/LanguageProvider';
-
-const Text = lazy(() => import('@/components/About/Text'));
-const Education = lazy(() => import('@/components/About/Education'));
-const Contact = lazy(() => import('@/components/About/Contact'));
+import { pageHead } from '@/lib/seo';
 
 export const Route = createFileRoute('/about')({
-  head: () => ({
-    meta: [{ title: 'About | mgalihpp' }, { name: 'description', content: 'About mgalihpp.' }],
-  }),
+  head: () =>
+    pageHead({
+      title: 'About | mgalihpp',
+      description:
+        'Learn more about Muhammad Galih Pratama Putra, his background, education, and experience as a fullstack developer.',
+      path: '/about',
+    }),
   component: AboutPage,
 });
 
@@ -20,15 +22,9 @@ function AboutPage() {
   return (
     <div className="px-8 pb-5 pt-8">
       <PageTitle title={t('page.about.title')} description={t('page.about.description')} />
-      <Suspense fallback={<SectionSkeleton lines={2} />}>
-        <Text text={t('about.text')} />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton lines={3} />}>
-        <Education />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton lines={2} />}>
-        <Contact />
-      </Suspense>
+      <Text text={t('about.text')} />
+      <Education />
+      <Contact />
     </div>
   );
 }

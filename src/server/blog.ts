@@ -42,7 +42,7 @@ export const fetchBlogs = createServerFn({ method: 'GET' }).handler(
 );
 
 export const fetchBlogBySlug = createServerFn({ method: 'GET' })
-  .inputValidator((data: { slug: string }) => data)
+  .validator((data: { slug: string }) => data)
   .handler(async ({ data }): Promise<BlogItem[]> => {
     const client = getSanityClient();
     const query = groq`${buildQuery({
@@ -55,7 +55,7 @@ export const fetchBlogBySlug = createServerFn({ method: 'GET' })
   });
 
 export const incrementBlogViews = createServerFn({ method: 'POST' })
-  .inputValidator((data: { blogId: string }) => data)
+  .validator((data: { blogId: string }) => data)
   .handler(async ({ data }) => {
     try {
       const client = getSanityClient();

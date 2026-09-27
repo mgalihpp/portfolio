@@ -12,7 +12,11 @@ import blogCss from '../styles/blogDetails.css?url';
 
 export const Route = createRootRoute({
   head: () => ({
-    meta: [{ charSet: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+    meta: [
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'theme-color', content: '#09090b' },
+    ],
     links: [
       { rel: 'stylesheet', href: indexCss },
       { rel: 'stylesheet', href: blogCss },

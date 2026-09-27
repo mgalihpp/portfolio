@@ -2,11 +2,16 @@ import { createFileRoute } from '@tanstack/react-router';
 import SocialLinks from '@/components/Contact/SocialLinks';
 import PageTitle from '@/components/elements/PageTitle';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { pageHead } from '@/lib/seo';
 
 export const Route = createFileRoute('/contact')({
-  head: () => ({
-    meta: [{ title: 'Contact | mgalihpp' }, { name: 'description', content: 'Contact mgalihpp.' }],
-  }),
+  head: () =>
+    pageHead({
+      title: 'Contact | mgalihpp',
+      description:
+        'Get in touch with Muhammad Galih Pratama Putra through social links and contact channels.',
+      path: '/contact',
+    }),
   component: ContactPage,
 });
 

@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import imageUrlBuilder from '@sanity/image-url';
+import { createImageUrlBuilder } from '@sanity/image-url';
 import { createClient } from '@sanity/client';
 import type { BlogItem } from './blog-types';
 
@@ -11,7 +11,7 @@ const publicClient = createClient({
   apiVersion: '2021-08-31',
 });
 
-const builder = imageUrlBuilder(publicClient);
+const builder = createImageUrlBuilder(publicClient);
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

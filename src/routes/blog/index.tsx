@@ -3,15 +3,17 @@ import { fetchBlogs } from '../../server/blog';
 import BlogSection from '../../components/blog/BlogSection';
 import PageTitle from '@/components/elements/PageTitle';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { pageHead } from '@/lib/seo';
 
 export const Route = createFileRoute('/blog/')({
   loader: async () => fetchBlogs(),
-  head: () => ({
-    meta: [
-      { title: 'Blog | mgalihpp' },
-      { name: 'description', content: 'Blog posts about frontend, backend, and fullstack.' },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: 'Blog | mgalihpp',
+      description:
+        'Blog posts by Muhammad Galih Pratama Putra about frontend, backend, React, and fullstack development.',
+      path: '/blog',
+    }),
   component: BlogListPage,
 });
 

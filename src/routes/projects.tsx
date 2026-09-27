@@ -4,11 +4,16 @@ import Card from '@/components/Projects/Card';
 import { PROJECTS_ITEMS } from '@/constants/Project';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { pageHead } from '@/lib/seo';
 
 export const Route = createFileRoute('/projects')({
-  head: () => ({
-    meta: [{ title: 'Projects | mgalihpp' }, { name: 'description', content: 'Projects by mgalihpp.' }],
-  }),
+  head: () =>
+    pageHead({
+      title: 'Projects | mgalihpp',
+      description:
+        'Selected projects by Muhammad Galih Pratama Putra, built with React, TypeScript, and modern web technologies.',
+      path: '/projects',
+    }),
   component: ProjectsPage,
 });
 

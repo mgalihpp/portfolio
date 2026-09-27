@@ -1,24 +1,62 @@
-import { Suspense, lazy } from 'react';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { imageUrlFor } from '@/lib/utils';
 import { format } from 'date-fns';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 import { Separator } from '@/components/Separator';
-import { Skeleton } from '@/components/elements/Skeleton';
+import Article from '../../components/blog/Article';
+import Aside from '../../components/blog/Aside';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { fetchBlogBySlug } from '../../server/blog';
-
-const Article = lazy(() => import('../../components/blog/Article'));
-const Aside = lazy(() => import('../../components/blog/Aside'));
+import { SITE_URL, pageHead } from '@/lib/seo';
 
 export const Route = createFileRoute('/blog/$slug')({
   loader: async ({ params }) => fetchBlogBySlug({ data: { slug: params.slug } }),
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     const blog = loaderData?.[0];
+    const path = `/blog/${params.slug}`;
+    if (!blog) {
+      return pageHead({
+        title: 'Post not found | mgalihpp',
+        description: 'The requested blog post could not be found.',
+        path,
+      });
+    }
+    const postImage = blog.mainImage?.asset?.url;
+    const base = pageHead({
+      title: `${blog.title} | mgalihpp`,
+      description: blog.description,
+      path,
+      image: postImage,
+      type: 'article',
+    });
     return {
+      ...base,
       meta: [
-        { title: blog ? `${blog.title} | mgalihpp` : 'Post not found' },
-        { name: 'description', content: blog?.description ?? '' },
+        ...base.meta,
+        { property: 'article:published_time', content: blog.publishedAt },
+        { property: 'article:author', content: blog.author.name },
+        ...blog.categories.map((category) => ({
+          property: 'article:tag',
+          content: category.title,
+        })),
+      ],
+      scripts: [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: blog.title,
+            description: blog.description,
+            image: postImage,
+            url: `${SITE_URL}${path}`,
+            datePublished: blog.publishedAt,
+            author: {
+              '@type': 'Person',
+              name: blog.author.name,
+            },
+          }),
+        },
       ],
     };
   },
@@ -89,12 +127,8 @@ function BlogDetailPage() {
         <Separator className="my-8 border-dashed" />
 
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-8">
-          <Suspense fallback={<Skeleton className="h-96 w-full lg:col-span-2" />}>
-            <Article content={blog.content} />
-          </Suspense>
-          <Suspense fallback={<Skeleton className="h-64 w-full" />}>
-            <Aside content={blog.content} />
-          </Suspense>
+          <Article content={blog.content} />
+          <Aside content={blog.content} />
         </div>
       </section>
     </div>

@@ -1,19 +1,30 @@
-import { Suspense, lazy } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
+import Career from '@/components/Home/Career';
 import Hero from '@/components/Home/Hero';
+import Stack from '@/components/Home/Stack';
+import AiTools from '@/components/Home/AiTools';
 import PageTitle from '@/components/elements/PageTitle';
-import { SectionSkeleton } from '@/components/elements/SectionSkeleton';
 import { useLanguage } from '@/providers/LanguageProvider';
-
-const Career = lazy(() => import('@/components/Home/Career'));
-const Stack = lazy(() => import('@/components/Home/Stack'));
-const AiTools = lazy(() => import('@/components/Home/AiTools'));
+import { SITE_URL, pageHead } from '@/lib/seo';
 
 export const Route = createFileRoute('/')({
   head: () => ({
-    meta: [
-      { title: 'mgalihpp | Fullstack Developer' },
-      { name: 'description', content: 'Portfolio of mgalihpp.' },
+    ...pageHead({
+      title: 'mgalihpp | Fullstack Developer',
+      description:
+        'Portfolio of Muhammad Galih Pratama Putra, a fullstack developer working with React, TypeScript, and modern web technologies.',
+      path: '/',
+    }),
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'mgalihpp',
+          url: SITE_URL,
+        }),
+      },
     ],
   }),
   component: HomePage,
@@ -25,15 +36,9 @@ function HomePage() {
     <div className="px-8 pb-5 pt-8">
       <PageTitle title={t('page.home.title')} description={t('page.home.description')} />
       <Hero />
-      <Suspense fallback={<SectionSkeleton lines={3} />}>
-        <Career />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton lines={4} />}>
-        <Stack />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton lines={3} />}>
-        <AiTools />
-      </Suspense>
+      <Career />
+      <Stack />
+      <AiTools />
     </div>
   );
 }
