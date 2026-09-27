@@ -65,6 +65,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en" className="dark">
       <head>
         <HeadContent />
+        <noscript>
+          <style>{`[style*="opacity:0"],[style*="opacity: 0"]{opacity:1 !important;transform:none !important;}`}</style>
+        </noscript>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var k='vite-ui-theme';var t=localStorage.getItem(k)||'dark';if(t==='system'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.classList.add(t);})();`,
