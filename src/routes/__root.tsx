@@ -50,8 +50,9 @@ export const Route = createRootRoute({
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       {
-        rel: 'stylesheet',
+        rel: 'preload',
         href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap',
+        as: 'style',
       },
       { rel: 'icon', type: 'image/jpeg', href: '/bba.jpg' },
     ],
@@ -71,6 +72,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var k='vite-ui-theme';var t=localStorage.getItem(k)||'dark';if(t==='system'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.classList.add(t);})();`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var h='https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap';var l=document.createElement('link');l.rel='stylesheet';l.href=h;document.head.appendChild(l);})();`,
           }}
         />
       </head>

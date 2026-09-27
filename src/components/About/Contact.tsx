@@ -8,7 +8,7 @@ export default function Contact() {
     <motion.section
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6 }}
+      transition={{ delay: 0 }}
     >
       <h2 className='primary text-lg font-semibold md:text-xl'>
         {t('about.contact.title')}

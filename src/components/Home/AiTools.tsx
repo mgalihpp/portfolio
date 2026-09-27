@@ -14,7 +14,7 @@ const AiTools = () => {
     <motion.section
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6 }}
+      transition={{ delay: 0 }}
     >
       <div className='primary mb-5 mt-10 flex items-center gap-2'>
         <HiSparkles />
