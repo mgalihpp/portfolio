@@ -1,17 +1,31 @@
 import Tippy from '@tippyjs/react/headless';
+import { cn } from '@/lib/utils';
 
 interface TooltipProps {
   children: React.ReactElement;
   label: string;
-  placement: 'top' | 'bottom';
+  placement?: 'top' | 'bottom' | 'left' | 'right';
+  tooltipClassName?: string;
 }
 
-export default function Tooltip({ children, label, placement }: TooltipProps) {
+export default function Tooltip({
+  children,
+  label,
+  placement = 'top',
+  tooltipClassName,
+}: TooltipProps) {
   return (
     <Tippy
       placement={placement}
-      render={() => (
-        <div className='primary max-w-xs rounded-md bg-neutral-200 px-4 py-3 text-center text-sm leading-relaxed dark:bg-neutral-800'>
+      offset={[0, 12]}
+      render={(attrs) => (
+        <div
+          {...attrs}
+          className={cn(
+            'primary max-w-xs rounded-md bg-neutral-200 px-3 py-2 text-center text-sm font-medium leading-relaxed shadow-md dark:bg-neutral-800',
+            tooltipClassName
+          )}
+        >
           {label}
         </div>
       )}

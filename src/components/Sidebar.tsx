@@ -1,6 +1,7 @@
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { Separator } from './Separator';
+import Tooltip from './elements/Tooltip';
 import { NAVLINK_ITEMS } from '@/constants/NavLink';
 import { Link, useLocation } from '@tanstack/react-router';
 import { useLanguage } from '@/providers/LanguageProvider';
@@ -41,17 +42,24 @@ const Sidebar = () => {
 
             return (
               <li key={index}>
-                <Link
-                  to={item.pathname}
-                  className={`${
-                    isActivePage
-                      ? 'bg-gradient-linear text-primary-light hover:scale-100'
-                      : 'primary hover:scale-[1.08]'
-                  } flex w-fit items-center gap-4 rounded-md px-3 py-3 font-bold duration-200 ease-in-out hover:bg-neutral-200 dark:hover:bg-neutral-800 lg:w-full`}
+                <Tooltip
+                  placement="right"
+                  label={t(item.labelKey)}
+                  tooltipClassName="lg:hidden"
                 >
-                  {item.icon}
-                  <span className="hidden lg:block">{t(item.labelKey)}</span>
-                </Link>
+                  <Link
+                    to={item.pathname}
+                    aria-label={t(item.labelKey)}
+                    className={`${
+                      isActivePage
+                        ? 'bg-gradient-linear text-primary-light hover:scale-100'
+                        : 'primary hover:scale-[1.08]'
+                    } flex w-fit items-center gap-4 rounded-md px-3 py-3 font-bold duration-200 ease-in-out hover:bg-neutral-200 dark:hover:bg-neutral-800 lg:w-full`}
+                  >
+                    {item.icon}
+                    <span className="hidden lg:block">{t(item.labelKey)}</span>
+                  </Link>
+                </Tooltip>
               </li>
             );
           })}
