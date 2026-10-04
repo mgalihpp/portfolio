@@ -33,7 +33,7 @@ export default function Footer() {
       </ul>
 
       <p className='mt-8 text-center text-sm'>
-        mgalihpp &copy; {new Date().getFullYear()}
+        &copy; {new Date().getFullYear()} mgalihpp - {t('common.footer')}
       </p>
     </footer>
   );

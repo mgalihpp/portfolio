@@ -3,6 +3,7 @@ import type { TranslationKey } from './en';
 export const id: Record<TranslationKey, string> = {
   'common.role': 'Programmer',
   'common.reachMeOut': 'Hubungi saya di',
+  'common.footer': 'Semua hak dilindungi, kecuali dari bug',
 
   'nav.home': 'Beranda',
   'nav.about': 'Tentang',

@@ -1,6 +1,7 @@
 export const en = {
   'common.role': 'Programmer',
   'common.reachMeOut': 'Reach me out at',
+  'common.footer': 'All rights reserved, except from bugs',
 
   'nav.home': 'Home',
   'nav.about': 'About',
