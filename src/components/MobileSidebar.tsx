@@ -97,7 +97,7 @@ function MobileSideBar() {
           </div>
         </div>
 
-        <ul className='flex cursor-pointer items-center gap-6 text-neutral-900 dark:text-white'>
+        <ul className='flex cursor-pointer items-center gap-2 text-neutral-900 dark:text-white'>
           <li>
             <LanguageToggle />
           </li>
@@ -105,7 +105,10 @@ function MobileSideBar() {
             <ThemeToggle />
           </li>
           <li>
-            <button onClick={handleBarIconClick}>
+            <button
+              onClick={handleBarIconClick}
+              className='grid size-10 place-items-center rounded-full transition duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 active:scale-95'
+            >
               <FaBars size={20} className='text-neutral-900 dark:text-white' />
             </button>
           </li>
@@ -138,7 +141,7 @@ function MobileSideBar() {
                       <Link
                         onClick={toggleModal}
                         to={item.pathname}
-                        className='cursor-pointer text-2xl font-light text-neutral-900 dark:text-white'
+                        className='relative inline-block cursor-pointer text-2xl font-light text-neutral-900 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-center after:scale-x-0 after:rounded-full after:bg-gradient-linear after:transition-transform after:duration-300 hover:after:scale-x-100 dark:text-white'
                       >
                         {t(item.labelKey)}
                       </Link>
