@@ -1,5 +1,11 @@
-import Tippy from '@tippyjs/react/headless';
+import TippyModule from '@tippyjs/react/headless';
 import { cn } from '@/lib/utils';
+
+type TippyComponent = typeof TippyModule;
+
+// CJS package: under SSR the default import is the module object, not the component.
+const Tippy: TippyComponent =
+  (TippyModule as unknown as { default?: TippyComponent }).default ?? TippyModule;
 
 interface TooltipProps {
   children: React.ReactElement;
