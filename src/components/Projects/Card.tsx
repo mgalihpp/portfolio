@@ -86,7 +86,10 @@ export default function Card(props: ProjectCardProps) {
             {props.techStack.map((tech, index) => (
               <li className="text-2xl" key={index}>
                 <Tooltip placement="top" label={tech.label}>
-                  <div>{tech.icon}</div>
+                  <div>
+                    {tech.icon}
+                    <span className="sr-only">{tech.label}</span>
+                  </div>
                 </Tooltip>
               </li>
             ))}

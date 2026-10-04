@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { HeadContent, Scripts, createRootRoute, useRouter } from '@tanstack/react-router';
+import { IconContext } from 'react-icons';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import { LanguageProvider } from '@/providers/LanguageProvider';
 import { PostHogAppProvider } from '@/providers/PostHogProvider';
@@ -12,6 +13,9 @@ import indexCss from '../index.css?url';
 import blogCss from '../styles/blogDetails.css?url';
 import { NotFound } from '@/components/NotFound';
 import { EntranceEnabler } from '@/hooks/useEntrance';
+
+// Icons always sit beside visible text, so hide them from assistive tech.
+const ICON_CONTEXT = { attr: { 'aria-hidden': true } };
 
 const TanStackDevtoolsShell = import.meta.env.DEV
   ? lazy(() =>
@@ -85,17 +89,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <PostHogAppProvider>
           <ThemeProvider defaultTheme="dark">
             <LanguageProvider>
-              <PostHogPageView />
-              <div className="md:flex lg:m-auto lg:max-w-5xl lg:justify-center">
-                <Sidebar />
-                <MobileSideBar />
-                <div className="w-full lg:max-w-3xl">
-                  <main>{children}</main>
-                  <Footer />
+              <IconContext.Provider value={ICON_CONTEXT}>
+                <PostHogPageView />
+                <div className="md:flex lg:m-auto lg:max-w-5xl lg:justify-center">
+                  <Sidebar />
+                  <MobileSideBar />
+                  <div className="w-full lg:max-w-3xl">
+                    <main>{children}</main>
+                    <Footer />
+                  </div>
                 </div>
-              </div>
-              <TopLoadingBar />
-              <EntranceEnabler />
+                <TopLoadingBar />
+                <EntranceEnabler />
+              </IconContext.Provider>
             </LanguageProvider>
           </ThemeProvider>
         </PostHogAppProvider>
