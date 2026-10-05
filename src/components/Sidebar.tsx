@@ -14,7 +14,7 @@ const Sidebar = () => {
     <header className="sticky top-0 ml-8 hidden h-screen w-fit pt-8 md:flex md:flex-col lg:w-52">
       <div className="flex items-center gap-4">
         <img
-          src="/my.jpg"
+          src="/my.webp"
           alt="mgalihpp avatar"
           className="border__color size-11 rounded-full"
           loading="lazy"

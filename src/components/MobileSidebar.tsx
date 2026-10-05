@@ -81,7 +81,7 @@ function MobileSideBar() {
       <header className='container mx-auto hidden items-center justify-between p-2 max-md:flex'>
         <div className='flex items-center gap-4'>
           <img
-            src='/my.jpg'
+            src='/my.webp'
             alt='mgalihpp avatar'
             className='border__color size-10 rounded-full'
             loading='lazy'

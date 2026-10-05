@@ -90,7 +90,7 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://zyvo-zeta.vercel.app',
     name: 'Zyvo',
-    image: '/projects/zyvo.png',
+    image: '/projects/zyvo.webp',
     imageAlt: 'Zyvo preview image',
     techStack: [
       TECH.ts,
@@ -107,7 +107,7 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://warungmamania.vercel.app',
     name: 'Warung POS',
-    image: '/projects/warungmamania.png',
+    image: '/projects/warungmamania.webp',
     imageAlt: 'Warung POS preview image',
     techStack: [
       TECH.ts,
@@ -123,7 +123,7 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://katalis-ai-xi.vercel.app',
     name: 'Katalis AI',
-    image: '/projects/katalis-ai.png',
+    image: '/projects/katalis-ai.webp',
     imageAlt: 'Katalis AI preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.firebase, TECH.ai],
     description:
@@ -141,7 +141,7 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://forgy-forge.vercel.app/',
     name: 'Prompt Forge',
-    image: '/projects/prompt-forge.png',
+    image: '/projects/prompt-forge.webp',
     imageAlt: 'Prompt Forge preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.prisma, TECH.ai],
     description:
@@ -150,7 +150,7 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://fiilo-gilt.vercel.app',
     name: 'Fiilo',
-    image: '/projects/fiilo.png',
+    image: '/projects/fiilo.webp',
     imageAlt: 'Fiilo preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.prisma, TECH.ai],
     description:
@@ -159,7 +159,7 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://vibe-coder-tau.vercel.app',
     name: 'Vibe Coder',
-    image: '/projects/vibe-coder.png',
+    image: '/projects/vibe-coder.webp',
     imageAlt: 'Vibe Coder preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.prisma, TECH.trpc],
     description:
@@ -175,7 +175,7 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://trywear-web.vercel.app',
     name: 'TryWear',
-    image: '/projects/trywear.png',
+    image: '/projects/trywear.webp',
     imageAlt: 'TryWear preview image',
     techStack: [TECH.ts, TECH.next, TECH.react, TECH.tailwind, TECH.express],
     description:
@@ -209,7 +209,7 @@ export const PROJECTS_ITEMS: Project[] = [
   {
     url: 'https://nexus-plum-three.vercel.app',
     name: 'Nexus',
-    image: '/projects/nexus.png',
+    image: '/projects/nexus.webp',
     imageAlt: 'Nexus preview image',
     techStack: [TECH.ts, TECH.vue, TECH.tailwind, TECH.vite],
     description:
@@ -217,7 +217,7 @@ export const PROJECTS_ITEMS: Project[] = [
   },
   {
     url: 'https://github.com/mgalihpp/my-dlmm-bot',
-    image: '/projects/dlmm.png',
+    image: '/projects/dlmm.webp',
     imageAlt: 'DLMM Bot preview image',
     name: 'DLMM Bot',
     techStack: [TECH.ts, TECH.node, TECH.telegram],
